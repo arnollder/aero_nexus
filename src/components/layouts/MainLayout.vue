@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent, type CSSProperties, type PropType } from 'vue'
 
-import HeaderV from '@/components/HeaderV.vue'
+import HeaderV from '@/components/composition/HeaderV.vue'
 import VFooter from '@/components/composition/VFooter.vue'
 
 export default defineComponent({
