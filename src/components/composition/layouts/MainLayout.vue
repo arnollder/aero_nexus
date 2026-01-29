@@ -14,11 +14,11 @@
 </template>
 
 <script setup lang="ts">
-import { type PropType, type CSSProperties } from 'vue';
+import { type PropType, type CSSProperties, ref } from 'vue';
 import HeaderV from '@/components/composition/HeaderV.vue';
 import VFooter from '@/components/composition/VFooter.vue';
 
-let isDark = false;
+const isDark = ref(false);
 
 // пропсы
 defineProps({
@@ -41,8 +41,8 @@ const emit = defineEmits(['toggleTheme']);
 
 // методы
 const toggleTheme = (event: boolean) => {
-  isDark = event;
-  emit('toggleTheme', isDark);
+  isDark.value = event;
+  emit('toggleTheme', isDark.value);
 };
 </script>
 
