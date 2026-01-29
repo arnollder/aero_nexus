@@ -39,7 +39,9 @@ export default defineComponent({
       default: () => ({}),
     },
   },
+
   emits: ['decrement'],
+
   computed: {
     doubleCount() {
       return this.count * 2;
@@ -52,6 +54,7 @@ export default defineComponent({
       return styles;
     },
   },
+
   methods: {
     showDecrement() {
       console.log('decrement');
@@ -70,6 +73,7 @@ export default defineComponent({
       this.count = 0;
     },
   },
+  
   watch: {
     count: {
       handler(newValue, oldValue) {
