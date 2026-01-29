@@ -72,7 +72,7 @@
 
 <script lang="ts">
 import { defineComponent, type CSSProperties, type PropType } from 'vue';
-import ClickCounter from '@/components/ClickCounter.vue';
+import ClickCounter from '@/components/composition/ClickCounter.vue';
 import ProductCard from '@/components/ProductCard.vue';
 
 export default defineComponent({

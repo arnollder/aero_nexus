@@ -25,7 +25,7 @@ let count = ref(0);
 defineProps({
   buttonsTheme: {
     type: Object as PropType<CSSProperties>,
-    required: true,
+    // required: true,
   },
 });
 
