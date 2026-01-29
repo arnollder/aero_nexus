@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import { type PropType, type CSSProperties } from 'vue';
+import { ref, type PropType, type CSSProperties } from 'vue';
 
-let isDark = false;
+const isDark = ref(false);
 
 // пропсы
 defineProps({
@@ -28,8 +28,8 @@ const emit = defineEmits(['toggleTheme']);
 
 // методы
 const toggleTheme = () => {
-  isDark = !isDark;
-  emit('toggleTheme', isDark);
+  isDark.value = !isDark.value;
+  emit('toggleTheme', isDark.value);
 }
 </script>
 
