@@ -16,16 +16,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import type { CSSProperties, PropType } from 'vue';
 
-let count = ref(0);
+const count = ref(0);
 
 // пропсы
 defineProps({
   buttonsTheme: {
     type: Object as PropType<CSSProperties>,
-    // required: true,
+    default: () => {}
   },
 });
 
