@@ -30,7 +30,9 @@ defineProps({
 });
 
 // методы
-// const decrement = computed(() => count.value++)
+const increment = () => count.value++;
+const decrement = () => count.value--;
+const reset = () => (count.value = 0);
 </script>
 
 <style scoped>
