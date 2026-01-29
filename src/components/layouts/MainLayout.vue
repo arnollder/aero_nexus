@@ -11,7 +11,7 @@
     <div class="container">
         <slot />
     </div>
-    <FooterV 
+    <VFooter 
         title="Footer"
         :style="switchThemeHeaderFooter"      
     />
@@ -20,8 +20,9 @@
 
 <script lang="ts">
 import { defineComponent, type CSSProperties, type PropType } from 'vue'
-import FooterV from '@/components/FooterV.vue'
+
 import HeaderV from '@/components/HeaderV.vue'
+import VFooter from '@/components/composition/VFooter.vue'
 
 export default defineComponent({
   name: 'MainLayout',
@@ -30,7 +31,7 @@ export default defineComponent({
       isDark: false,
     }
   },
-  components: { HeaderV, FooterV },
+  components: { HeaderV, VFooter },
   props: {
     switchThemeHeaderFooter: {
         type: Object as PropType<CSSProperties>,
