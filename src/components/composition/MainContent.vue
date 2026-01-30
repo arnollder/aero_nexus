@@ -1,5 +1,5 @@
 <template>
-  <div class="content" :style="themeStyles">
+  <div class="content" :style="themeStylesSection">
     <section>
       <h1>{{ title }}</h1>
       <!-- <ClickCounter 
@@ -82,6 +82,10 @@ defineProps({
   title: {
     type: String,
     default: 'default title',
+  },
+  themeStylesSection: {
+    type: Object as PropType<CSSProperties>,
+    default: () => ({}),
   },
   themeStyles: {
     type: Object as PropType<CSSProperties>,

@@ -1,5 +1,5 @@
 <template>
-  <div class="user-root" :style="buttonsTheme">
+  <div class="user-root" :style="[buttonsTheme, themeStyles]">
     <div class="user-info" :style="themeStyles">
       <slot name="prepend" />
       <div class="name">{{ $props.product?.name }}</div>

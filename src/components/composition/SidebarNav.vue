@@ -1,5 +1,5 @@
 <template>
-  <nav class="sidebar" :style="themeStyles">
+  <nav class="sidebar" :style="[themeStyles, themeStylesSection]">
     <ul class="menu">
       <li><a href="#" :style="themeStyles">Главная</a></li>
       <li><a href="#" :style="themeStyles">Летательные аппараты</a></li>
@@ -16,6 +16,10 @@ defineProps({
   themeStyles: {
     type: Object as PropType<CSSProperties>,
     required: true,
+  },
+  themeStylesSection: {
+    type: Object as PropType<CSSProperties>,
+    default: () => ({}),
   },
 });
 </script>

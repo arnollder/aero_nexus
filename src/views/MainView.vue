@@ -1,18 +1,24 @@
 <template>
-  <MainLayout
-    @toggleTheme="toggleTheme"
-    :switchThemeHeaderFooter="switchThemeHeaderFooter"
-    :switchThemeMain="switchThemeMain"
-    :buttonsTheme="buttonsTheme"
-  >
-    <MainContent
-      class="border"
-      title="Летательные аппараты"
-      :theme-styles="switchTheme"
+  <div :style="themeStylesSection" class="page-background">
+    <MainLayout
+      @toggleTheme="toggleTheme"
+      :switchThemeHeaderFooter="switchThemeHeaderFooter"
+      :switchThemeMain="switchThemeMain"
       :buttonsTheme="buttonsTheme"
-    />
-    <SidebarNav :theme-styles="switchTheme" class="border" />
-  </MainLayout>
+    >
+      <MainContent
+        class="border"
+        title="Летательные аппараты"
+        :themeStylesSection="themeStylesSection"
+        :theme-styles="switchTheme"
+        :buttonsTheme="buttonsTheme"
+      />
+      <SidebarNav 
+        :theme-styles="switchTheme" class="border" 
+        :themeStylesSection="themeStylesSection"
+      />
+    </MainLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +30,13 @@ import { ref, computed, type CSSProperties } from 'vue';
 const isDarkTheme = ref(false);
 
 // вычисляемые свойства
+const themeStylesSection = computed((): CSSProperties => {
+  return {
+    'background-color': isDarkTheme.value ? '#36373a' : 'rgba(255, 255, 255, 0.3)',
+    color: isDarkTheme.value ? 'darkgray' : 'black',
+  };
+});
+
 const switchTheme = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? '#36373a' : 'white',
@@ -53,17 +66,10 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 </script>
 
 <style scoped>
-.root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.container {
-  display: flex;
-  column-gap: 10px;
-  flex-grow: 1;
-  padding: 10px;
+.page-background {
+  background-image: url('../assets/images/backgrounds/page_background.webp');
+  background-size: cover;
+  background-position: center;
 }
 .border {
   border: 3px solid gray;
