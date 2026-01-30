@@ -1,5 +1,5 @@
 <template>
-  <div :style="themeStylesSection" class="page-background">
+  <div class="page-background">
     <MainLayout
       @toggleTheme="toggleTheme"
       :switchThemeHeaderFooter="switchThemeHeaderFooter"
@@ -13,8 +13,9 @@
         :theme-styles="switchTheme"
         :buttonsTheme="buttonsTheme"
       />
-      <SidebarNav 
-        :theme-styles="switchTheme" class="border" 
+      <SidebarNav
+        :theme-styles="switchTheme"
+        class="border"
         :themeStylesSection="themeStylesSection"
       />
     </MainLayout>
@@ -59,15 +60,38 @@ const buttonsTheme = computed((): CSSProperties => {
     'background-color': isDarkTheme.value ? 'gray' : undefined,
   };
 });
+// вычисляю бэкграунд страницы
+const pageBackgroundUrl = computed(() => {
+  if (isDarkTheme.value === false) {
+    return '../assets/images/backgrounds/page_background.webp';
+  }
+  return '../assets/images/backgrounds/page_background_night.webp';
+});
+
+const pageBackground = computed(() => ({
+  backgroundImage: `url(${pageBackgroundUrl.value})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+}))
+
+console.log(pageBackgroundUrl.value)
+
+// const pageBackgroundCSSVar = computed(() => ({
+//   '--background-url': `url(${pageBackgroundUrl.value})`,
+// }));
+// console.log(pageBackgroundUrl);
+// const cssVariables = computed(() => ({
+//   '--image-url': `url(${imageUrl.value})`
+// }))
 
 // методы
 const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
-
 </script>
 
 <style scoped>
 .page-background {
   background-image: url('../assets/images/backgrounds/page_background.webp');
+  /* background-image: var(--background-url); */
   background-size: cover;
   background-position: center;
 }
