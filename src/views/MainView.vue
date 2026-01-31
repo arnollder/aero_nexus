@@ -34,25 +34,25 @@ const isDarkTheme = ref(false);
 // вычисляемые свойства
 const themeStylesSection = computed((): CSSProperties => {
   return {
-    'background-color': isDarkTheme.value ? '#36373a' : 'rgba(255, 255, 255, 0.3)',
+    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(255, 255, 255, 0.3)',
     color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
 
 const switchTheme = computed((): CSSProperties => {
   return {
-    'background-color': isDarkTheme.value ? '#36373a' : 'white',
+    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58)' : 'white',
     color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
 const switchThemeMain = computed((): CSSProperties => {
   return {
-    'background-color': isDarkTheme.value ? 'darkgray' : undefined,
+    'background-color': isDarkTheme.value ? 'rgba(169, 169, 169, 0.5)' : undefined,
   };
 });
 const switchThemeHeaderFooter = computed((): CSSProperties => {
   return {
-    'background-color': isDarkTheme.value ? '#36373a' : 'rgba(13, 140, 190, 0.5)',
+    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(13, 140, 190, 0.5)',
     color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
@@ -95,5 +95,6 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 }
 .border {
   border: 3px solid gray;
+  color: rgb(54, 55, 58);
 }
 </style>
