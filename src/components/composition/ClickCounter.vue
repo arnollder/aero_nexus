@@ -7,32 +7,28 @@
       <div>Заказ: {{ count }} шт.</div>
       <!-- <div>Double count {{ doubleCount }}</div> -->
       <div class="buttons">
-        <button class="btn" :style="buttonsTheme" @click="decrement">-</button>
-        <button class="btn" :style="buttonsTheme" @click="increment">+</button>
-        <button class="btn-delete" :style="buttonsTheme" @click="reset">x</button>
+        <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
+        <button class="btn" :style="buttonsStyles" @click="increment">+</button>
+        <button class="btn-delete" :style="buttonsStyles" @click="reset">x</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { CSSProperties, PropType } from 'vue';
+import { inject, ref } from 'vue';
+import type { CSSProperties, ComputedRef } from 'vue';
 
 const count = ref(0);
-
-// пропсы
-defineProps({
-  buttonsTheme: {
-    type: Object as PropType<CSSProperties>,
-    default: () => {}
-  },
-});
 
 // методы
 const increment = () => count.value++;
 const decrement = () => count.value--;
 const reset = () => (count.value = 0);
+
+// ===== INJECT =====
+// == provide from MainView ==
+const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles'); 
 </script>
 
 <style scoped>

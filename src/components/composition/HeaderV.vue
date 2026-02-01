@@ -2,12 +2,13 @@
   <header class="header">
     {{ title }}
     <!-- <SwitchTheme /> -->
-    <button class="switch" @click="toggleTheme" :style="buttonsTheme">Switch Theme</button>
+    <button class="switch" @click="toggleTheme" :style="buttonsStyles">Switch Theme</button>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref, type PropType, type CSSProperties } from 'vue';
+import { ref, inject } from 'vue';
+import type { CSSProperties, ComputedRef } from 'vue';
 
 const isDark = ref(false);
 
@@ -16,10 +17,6 @@ defineProps({
   title: {
     type: String,
     default: 'default header',
-  },
-  buttonsTheme: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
   },
 });
 
@@ -30,7 +27,11 @@ const emit = defineEmits(['toggleTheme']);
 const toggleTheme = () => {
   isDark.value = !isDark.value;
   emit('toggleTheme', isDark.value);
-}
+};
+
+// ===== INJECT =====
+// == provide from MainView ==
+const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles'); 
 </script>
 
 <style scoped>
