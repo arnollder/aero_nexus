@@ -1,5 +1,5 @@
 <template>
-  <div class="user-root" :style="[buttonsTheme, themeStyles]">
+  <div class="user-root" :style="themeStyles">
     <div class="user-info" :style="themeStyles">
       <slot name="prepend" />
       <div class="name">{{ $props.product?.name }}</div>
@@ -38,10 +38,6 @@ export default defineComponent({
         }) as IUser,
     },
     themeStyles: {
-      type: Object as PropType<CSSProperties>,
-      default: () => ({}),
-    },
-    buttonsTheme: {
       type: Object as PropType<CSSProperties>,
       default: () => ({}),
     },

@@ -4,7 +4,6 @@
       @toggleTheme="toggleTheme"
       title="Гражданский Эшелон"
       :style="switchThemeHeaderFooter"
-      :buttonsTheme="buttonsTheme"
     />
     <div class="container">
       <slot />
@@ -27,10 +26,6 @@ defineProps({
     default: () => ({}),
   },
   switchThemeMain: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
-  },
-  buttonsTheme: {
     type: Object as PropType<CSSProperties>,
     default: () => ({}),
   },

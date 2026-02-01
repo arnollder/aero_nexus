@@ -5,14 +5,12 @@
       @toggleTheme="toggleTheme"
       :switchThemeHeaderFooter="switchThemeHeaderFooter"
       :switchThemeMain="switchThemeMain"
-      :buttonsTheme="buttonsTheme"
     >
       <MainContent
         class="border"
         title="Летательные аппараты"
         :themeStylesSection="themeStylesSection"
         :theme-styles="switchTheme"
-        :buttonsTheme="buttonsTheme"
       />
       <SidebarNav
         :theme-styles="switchTheme"
@@ -27,9 +25,11 @@
 import MainContent from '@/components/composition/MainContent.vue';
 import MainLayout from '@/components/composition/layouts/MainLayout.vue';
 import SidebarNav from '@/components/composition/SidebarNav.vue';
-import { ref, computed, type CSSProperties } from 'vue';
+import { ref, computed, type CSSProperties, provide } from 'vue';
 
+// ===== МЕТОДЫ =====
 const isDarkTheme = ref(false);
+const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 
 // вычисляемые свойства
 const themeStylesSection = computed((): CSSProperties => {
@@ -45,6 +45,7 @@ const switchTheme = computed((): CSSProperties => {
     color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
+
 const switchThemeMain = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(169, 169, 169, 0.5)' : undefined,
@@ -56,13 +57,16 @@ const switchThemeHeaderFooter = computed((): CSSProperties => {
     color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
-const buttonsTheme = computed((): CSSProperties => {
+
+// ===== PROVIDE =====
+const buttonsStyles = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'gray' : undefined,
   };
 });
+provide('buttonsStyles', buttonsStyles)
 
-// вычисляю бэкграунд страницы
+// ===== ВЫЧИСЛЯЮ БЭКГРАУНД СТРАНИЦЫ =====
 const pageBackgroundUrl = computed(() =>isDarkTheme.value === false
   ? '/src/assets/images/backgrounds/page_background.webp'
   : '/src/assets/images/backgrounds/page_background_night.webp',
@@ -74,22 +78,12 @@ const pageBackground = computed(() => ({
   backgroundPosition: 'center',
 }));
 
-// const pageBackgroundCSSVar = computed(() => ({
-//   '--background-url': `url(${pageBackgroundUrl.value})`,
-// }));
-// console.log(pageBackgroundUrl);
-// const cssVariables = computed(() => ({
-//   '--image-url': `url(${imageUrl.value})`
-// }))
 
-// методы
-const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 </script>
 
 <style scoped>
 .page-background {
   background-image: url('../assets/images/backgrounds/page_background_night.webp');
-  /* background-image: var(--background-url); */
   background-size: cover;
   background-position: center;
 }
