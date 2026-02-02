@@ -25,8 +25,9 @@ import MainLayout from '@/components/composition/layouts/MainLayout.vue';
 import SidebarNav from '@/components/composition/SidebarNav.vue';
 import { ref, computed, type CSSProperties, provide } from 'vue';
 
-// ===== МЕТОДЫ =====
 const isDarkTheme = ref(false);
+
+// ===== PROPS =====
 const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 
 // вычисляемые свойства
@@ -49,6 +50,14 @@ const switchThemeHeaderFooter = computed((): CSSProperties => {
 });
 
 // ===== PROVIDE =====
+const stylesLinks = computed((): CSSProperties => {
+  return {
+    'background-color': 'transparent',
+    color: isDarkTheme.value ? 'darkgray' : 'black',
+  };
+});
+provide('stylesLinks', stylesLinks)
+
 const productStyles = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(54, 55, 58)' : 'white',

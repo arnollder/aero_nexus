@@ -1,11 +1,10 @@
 <template>
   <nav class="sidebar" :style="themeStylesSection">
     <ul class="menu">
-      <!-- создать стили для ссылок и заменить :style="productStyles"  -->
-      <li><a href="#" :style="productStyles">Главная</a></li>
-      <li><a href="#" :style="productStyles">Летательные аппараты</a></li>
-      <li><a href="#" :style="productStyles">Парашютные системы</a></li>
-      <li><a href="#" :style="productStyles">Школа пилотирования</a></li>
+      <li><a href="#" :style="stylesLinks">Главная</a></li>
+      <li><a href="#" :style="stylesLinks">Летательные аппараты</a></li>
+      <li><a href="#" :style="stylesLinks">Парашютные системы</a></li>
+      <li><a href="#" :style="stylesLinks">Школа пилотирования</a></li>
     </ul>
   </nav>
 </template>
@@ -23,7 +22,8 @@ defineProps({
 
 // ===== INJECT =====
 // == provide from MainView ==
-const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
+const stylesLinks = inject<ComputedRef<CSSProperties>>('stylesLinks');
+
 </script>
 
 <style scoped>
