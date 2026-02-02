@@ -1,27 +1,29 @@
 <template>
-  <nav class="sidebar" :style="[themeStyles, themeStylesSection]">
+  <nav class="sidebar" :style="themeStylesSection">
     <ul class="menu">
-      <li><a href="#" :style="themeStyles">Главная</a></li>
-      <li><a href="#" :style="themeStyles">Летательные аппараты</a></li>
-      <li><a href="#" :style="themeStyles">Парашютные системы</a></li>
-      <li><a href="#" :style="themeStyles">Школа пилотирования</a></li>
+      <!-- создать стили для ссылок и заменить :style="productStyles"  -->
+      <li><a href="#" :style="productStyles">Главная</a></li>
+      <li><a href="#" :style="productStyles">Летательные аппараты</a></li>
+      <li><a href="#" :style="productStyles">Парашютные системы</a></li>
+      <li><a href="#" :style="productStyles">Школа пилотирования</a></li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
-import type { CSSProperties, PropType } from 'vue';
+import { inject } from 'vue';
+import type { CSSProperties, PropType, ComputedRef } from 'vue';
 
 defineProps({
-  themeStyles: {
-    type: Object as PropType<CSSProperties>,
-    required: true,
-  },
   themeStylesSection: {
     type: Object as PropType<CSSProperties>,
     default: () => ({}),
   },
 });
+
+// ===== INJECT =====
+// == provide from MainView ==
+const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
-  <div class="user-root" :style="themeStyles">
-    <div class="user-info" :style="themeStyles">
+  <div class="user-root" :style="productStyles">
+    <div class="user-info" :style="productStyles">
       <slot name="prepend" />
       <div class="name">{{ $props.product?.name }}</div>
       <div class="model">модель: {{ $props.product?.model }}</div>
@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType, type CSSProperties } from 'vue';
+import { defineComponent, inject } from 'vue';
+import type { ComputedRef, CSSProperties, PropType } from 'vue';
 
 interface IUser {
   name: string;
@@ -37,10 +38,12 @@ export default defineComponent({
           alt: 'No Img',
         }) as IUser,
     },
-    themeStyles: {
-      type: Object as PropType<CSSProperties>,
-      default: () => ({}),
-    },
+  },
+  // ===== INJECT =====
+  // == provide from MainView ==
+  setup() {
+    const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
+    return {productStyles};
   },
 });
 </script>

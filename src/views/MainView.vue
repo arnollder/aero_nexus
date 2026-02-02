@@ -10,10 +10,8 @@
         class="border"
         title="Летательные аппараты"
         :themeStylesSection="themeStylesSection"
-        :theme-styles="switchTheme"
       />
       <SidebarNav
-        :theme-styles="switchTheme"
         class="border"
         :themeStylesSection="themeStylesSection"
       />
@@ -38,14 +36,6 @@ const themeStylesSection = computed((): CSSProperties => {
     color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
-
-const switchTheme = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58)' : 'white',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
-
 const switchThemeMain = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(169, 169, 169, 0.5)' : undefined,
@@ -59,6 +49,14 @@ const switchThemeHeaderFooter = computed((): CSSProperties => {
 });
 
 // ===== PROVIDE =====
+const productStyles = computed((): CSSProperties => {
+  return {
+    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58)' : 'white',
+    color: isDarkTheme.value ? 'darkgray' : 'black',
+  };
+});
+provide('productStyles', productStyles)
+
 const buttonsStyles = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'gray' : undefined,
@@ -77,8 +75,6 @@ const pageBackground = computed(() => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 }));
-
-
 </script>
 
 <style scoped>

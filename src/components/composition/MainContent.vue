@@ -13,7 +13,6 @@
       <!-- <h2>Летательные аппараты</h2> -->
       <div class="user-blok">
         <ProductCard
-          :theme-styles="themeStyles"
           :product="{
             name: 'Самолёт',
             model: 'Ил-103',
@@ -31,7 +30,6 @@
         </ProductCard>
 
         <ProductCard
-          :theme-styles="themeStyles"
           :product="{
             name: 'Самолёт',
             model: 'Lake-4-200',
@@ -49,7 +47,6 @@
         </ProductCard>
 
         <ProductCard
-          :theme-styles="themeStyles"
           :product="{
             name: 'Самолёт',
             model: 'Cessna 172B',
@@ -81,10 +78,6 @@ defineProps({
     default: 'default title',
   },
   themeStylesSection: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
-  },
-  themeStyles: {
     type: Object as PropType<CSSProperties>,
     default: () => ({}),
   },
