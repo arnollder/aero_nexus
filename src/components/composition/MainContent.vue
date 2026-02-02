@@ -65,11 +65,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, type PropType, type CSSProperties } from 'vue';
+import { type PropType, type CSSProperties } from 'vue';
 import ClickCounter from '@/components/composition/ClickCounter.vue';
 import ProductCard from '@/components/ProductCard.vue';
 
-const isMainPageTitleGreen = ref(false);
+// const isMainPageTitleGreen = ref(false);
 
 // пропсы
 defineProps({
@@ -84,11 +84,11 @@ defineProps({
 });
 
 // методы
-const decrementHandler = (event: number) => {
-  isMainPageTitleGreen.value = event < -5 ? true : false;
-  console.log('decrement-handler', event);
-};
-</script>
+// const decrementHandler = (event: number) => {
+//   isMainPageTitleGreen.value = event < -5 ? true : false;
+//   console.log('decrement-handler', event);
+// };
+// </script>
 
 <style scoped>
 .content {
