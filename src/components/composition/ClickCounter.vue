@@ -4,10 +4,10 @@
       <!-- <h2 :style="[themeStyles, counterTitleColor]">
         {{ title }}
       </h2> -->
-      <div>Заказ: {{ count }} шт.</div>
+      <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
+      <div>{{ count }} шт.</div>
       <!-- <div>Double count {{ doubleCount }}</div> -->
       <div class="buttons">
-        <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
         <button class="btn" :style="buttonsStyles" @click="increment">+</button>
         <button class="btn-delete" :style="buttonsStyles" @click="reset">x</button>
       </div>
@@ -23,7 +23,11 @@ const count = ref(0);
 
 // методы
 const increment = () => count.value++;
-const decrement = () => count.value--;
+const decrement = () => {
+  if (count.value > 0) {
+    count.value--;
+  }
+}
 const reset = () => (count.value = 0);
 
 // ===== INJECT =====
