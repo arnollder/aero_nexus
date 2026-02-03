@@ -68,7 +68,7 @@ provide('productStyles', productStyles)
 
 const buttonsStyles = computed((): CSSProperties => {
   return {
-    'background-color': isDarkTheme.value ? 'gray' : undefined,
+    'background-color': isDarkTheme.value ? 'rgba(13, 140, 190)' : 'rgb(0, 183, 255)',
   };
 });
 provide('buttonsStyles', buttonsStyles)

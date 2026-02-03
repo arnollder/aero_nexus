@@ -4,13 +4,17 @@
       <!-- <h2 :style="[themeStyles, counterTitleColor]">
         {{ title }}
       </h2> -->
-      <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
-      <div>{{ count }} шт.</div>
       <!-- <div>Double count {{ doubleCount }}</div> -->
-      <div class="buttons">
+
+      <div class="basket">
+        <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
+        <div class="count">{{ count }} шт.</div>
         <button class="btn" :style="buttonsStyles" @click="increment">+</button>
-        <button class="btn-delete" :style="buttonsStyles" @click="reset">x</button>
       </div>
+
+      <!-- <div class="buttons">
+        <button class="btn-delete" :style="buttonsStyles" @click="reset">x</button>
+      </div> -->
     </div>
   </div>
 </template>
@@ -41,27 +45,41 @@ const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles');
   align-items: flex-end;
   justify-content: flex-end;
   margin-right: 10px;
+}
+.basket {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   column-gap: 10px;
+
+  background-color: rgba(107, 114, 136, 0.5);
+  border-radius: 50px;
+
 }
 button {
-  /* margin-right: 5px; */
-  /* padding: 5px; */
-  width: 25px;
-  height: 25px;
-  border: 1px solid rgba(4, 119, 13);
-  border-radius: 9px;
+  width: 55px;
+  height: 35px;
+  border: 0;
+  border-radius: 50px;
   cursor: pointer;
+  /* border: 3px solid; */
 }
 button:hover {
-  color: darkslategray;
-  border: 2px solid darkslategray;
+  border: 2px solid aliceblue;
   font-weight: 700;
 }
 .btn {
-  background-color: rgb(84, 207, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  font-size: 32px;
 }
 .btn-delete {
   margin-left: 5px;
   background-color: rgba(165, 42, 42, 0.9);
+}
+.count {
+  /* border: 5px solid white; */
 }
 </style>
