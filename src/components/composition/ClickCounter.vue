@@ -32,7 +32,7 @@ const decrement = () => {
     count.value--;
   }
 }
-const reset = () => (count.value = 0);
+// const reset = () => (count.value = 0);
 
 // ===== INJECT =====
 // == provide from MainView ==
