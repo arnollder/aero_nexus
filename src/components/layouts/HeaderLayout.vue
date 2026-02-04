@@ -1,7 +1,6 @@
 <template>
   <header class="header">
     {{ title }}
-    <!-- <SwitchTheme /> -->
     <button class="switch" @click="toggleTheme" :style="buttonsStyles">Switch Theme</button>
   </header>
 </template>
@@ -32,7 +31,6 @@ const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles');
 <style scoped>
 .header {
   height: 100px;
-  /* background-color: gray; */
   background-color: rgba(13, 140, 190, 0.5);
   font-size: 32px;
   display: flex;

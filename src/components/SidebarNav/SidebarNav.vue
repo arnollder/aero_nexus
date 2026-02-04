@@ -11,19 +11,14 @@
 
 <script setup lang="ts">
 import { inject } from 'vue';
-import type { CSSProperties, PropType, ComputedRef } from 'vue';
+import type { CSSProperties, ComputedRef } from 'vue';
+import type { ISidebarNavProps } from './types';
 
-defineProps({
-  themeStylesSection: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
-  },
-});
+defineProps<ISidebarNavProps>();
 
 // ===== INJECT =====
 // == provide from MainView ==
 const stylesLinks = inject<ComputedRef<CSSProperties>>('stylesLinks');
-
 </script>
 
 <style scoped>

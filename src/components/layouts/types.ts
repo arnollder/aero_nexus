@@ -1,7 +1,6 @@
 import type { CSSProperties } from 'vue';
 
 export interface IMainLayoutProps {
-  title: string;
   switchThemeMain: CSSProperties;
   switchThemeHeaderFooter: CSSProperties;
 }
