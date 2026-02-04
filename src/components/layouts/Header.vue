@@ -9,16 +9,11 @@
 <script setup lang="ts">
 import { ref, inject } from 'vue';
 import type { CSSProperties, ComputedRef } from 'vue';
+import type { IHeaderProps } from './types';
 
 const isDark = ref(false);
 
-// пропсы
-defineProps({
-  title: {
-    type: String,
-    default: 'default header',
-  },
-});
+defineProps<IHeaderProps>();
 
 // эмиты
 const emit = defineEmits(['toggleTheme']);
@@ -31,7 +26,7 @@ const toggleTheme = () => {
 
 // ===== INJECT =====
 // == provide from MainView ==
-const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles'); 
+const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles');
 </script>
 
 <style scoped>

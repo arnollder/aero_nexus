@@ -3,12 +3,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  title: {
-    type: String,
-    default: 'default footer',
-  },
-});
+import type { IFooterProps } from './types';
+
+defineProps<IFooterProps>();
 </script>
 
 <style scoped>

@@ -2,15 +2,8 @@
   <div class="content" :style="themeStylesSection">
     <section>
       <h1>{{ title }}</h1>
-      <!-- <ClickCounter 
-        @decrement="decrementHandler" 
-        :title="$options.title" 
-        :theme-styles="themeStyles"
-        :buttonsTheme="buttonsTheme"
-      /> -->
     </section>
     <section>
-      <!-- <h2>Летательные аппараты</h2> -->
       <div class="user-blok">
         <ProductCard
           :product="{
@@ -24,11 +17,7 @@
           <template #clickcounter>
             <ClickCounter />
           </template>
-          <!-- <template #append>
-            <p>*направления: JS, Vue</p>
-          </template> -->
         </ProductCard>
-
         <ProductCard
           :product="{
             name: 'Самолёт',
@@ -41,11 +30,7 @@
           <template #clickcounter>
             <ClickCounter />
           </template>
-          <!-- <template #append>
-            <p>* Самолёт-амфибия</p>
-          </template> -->
         </ProductCard>
-
         <ProductCard
           :product="{
             name: 'Самолёт',
@@ -65,30 +50,13 @@
 </template>
 
 <script setup lang="ts">
-import { type PropType, type CSSProperties } from 'vue';
+import type { IMainContentProps  } from './types';
 import ClickCounter from '@/components/ClickCounter.vue';
 import ProductCard from '@/components/ProductCard.vue';
 
-// const isMainPageTitleGreen = ref(false);
-
 // пропсы
-defineProps({
-  title: {
-    type: String,
-    default: 'default title',
-  },
-  themeStylesSection: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
-  },
-});
-
-// методы
-// const decrementHandler = (event: number) => {
-//   isMainPageTitleGreen.value = event < -5 ? true : false;
-//   console.log('decrement-handler', event);
-// };
-// </script>
+defineProps<IMainContentProps>();
+</script>
 
 <style scoped>
 .content {

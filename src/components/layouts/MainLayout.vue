@@ -1,26 +1,26 @@
 <template>
   <div class="root" :style="switchThemeMain">
-    <HeaderV
-      @toggleTheme="toggleTheme"
+    <Header
       title="Гражданский Эшелон"
+      @toggleTheme="toggleTheme"
       :style="switchThemeHeaderFooter"
     />
     <div class="container">
       <slot />
     </div>
-    <VFooter title="Footer" :style="switchThemeHeaderFooter" />
+    <Footer title="Footer" :style="switchThemeHeaderFooter" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { type PropType, type CSSProperties, ref } from 'vue';
-import HeaderV from '@/components/HeaderV.vue';
-import VFooter from '@/components/VFooter.vue';
+import { ref } from 'vue';
+import Header from '@/components/layouts/Header.vue';
+import Footer from '@/components/layouts/Footer.vue';
 import type { IMainLayoutProps } from './types';
 
 const isDark = ref(false);
 
- // пропсы
+// пропсы
 defineProps<IMainLayoutProps>();
 
 // эмиты
