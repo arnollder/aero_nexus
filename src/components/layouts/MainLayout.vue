@@ -16,7 +16,7 @@
 import { ref } from 'vue';
 import HeaderLayout from '@/components/layouts/HeaderLayout.vue';
 import FooterLayout from '@/components/layouts/FooterLayout.vue';
-import type { IMainLayoutProps } from './types';
+import type { IIsDarkEmit, IMainLayoutProps } from './types';
 
 const isDark = ref(false);
 
@@ -24,7 +24,7 @@ const isDark = ref(false);
 defineProps<IMainLayoutProps>();
 
 // эмиты
-const emit = defineEmits(['toggleTheme']);
+const emit = defineEmits<IIsDarkEmit>();
 
 // методы
 const toggleTheme = (event: boolean) => {

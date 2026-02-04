@@ -8,14 +8,14 @@
 <script setup lang="ts">
 import { ref, inject } from 'vue';
 import type { CSSProperties, ComputedRef } from 'vue';
-import type { IHeaderProps } from './types';
+import type { IIsDarkEmit, IHeaderProps } from './types';
 
 const isDark = ref(false);
 
 defineProps<IHeaderProps>();
 
 // эмиты
-const emit = defineEmits(['toggleTheme']);
+const emit = defineEmits<IIsDarkEmit>();
 
 // методы
 const toggleTheme = () => {

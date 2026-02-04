@@ -12,3 +12,7 @@ export interface IHeaderProps {
 export interface IFooterProps {
   title: string;
 }
+
+export interface IIsDarkEmit {
+  toggleTheme: [value: boolean];
+}
