@@ -16,20 +16,12 @@
 import { type PropType, type CSSProperties, ref } from 'vue';
 import HeaderV from '@/components/HeaderV.vue';
 import VFooter from '@/components/VFooter.vue';
+import type { IMainLayoutProps } from './types';
 
 const isDark = ref(false);
 
-// пропсы
-defineProps({
-  switchThemeHeaderFooter: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
-  },
-  switchThemeMain: {
-    type: Object as PropType<CSSProperties>,
-    default: () => ({}),
-  },
-});
+ // пропсы
+defineProps<IMainLayoutProps>();
 
 // эмиты
 const emit = defineEmits(['toggleTheme']);
