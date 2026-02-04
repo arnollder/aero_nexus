@@ -1,20 +1,11 @@
 <template>
   <div>
     <div class="add">
-      <!-- <h2 :style="[themeStyles, counterTitleColor]">
-        {{ title }}
-      </h2> -->
-      <!-- <div>Double count {{ doubleCount }}</div> -->
-
       <div class="basket">
         <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
-        <div class="count">{{ count }} шт.</div>
+        <div>{{ count }} шт.</div>
         <button class="btn" :style="buttonsStyles" @click="increment">+</button>
       </div>
-
-      <!-- <div class="buttons">
-        <button class="btn-delete" :style="buttonsStyles" @click="reset">x</button>
-      </div> -->
     </div>
   </div>
 </template>
@@ -32,7 +23,6 @@ const decrement = () => {
     count.value--;
   }
 }
-// const reset = () => (count.value = 0);
 
 // ===== INJECT =====
 // == provide from MainView ==
@@ -78,8 +68,5 @@ button:hover {
 .btn-delete {
   margin-left: 5px;
   background-color: rgba(165, 42, 42, 0.9);
-}
-.count {
-  /* border: 5px solid white; */
 }
 </style>

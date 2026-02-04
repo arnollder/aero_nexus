@@ -1,6 +1,6 @@
 <template>
   <div class="root" :style="switchThemeMain">
-    <Header
+    <HeaderLayout
       title="Гражданский Эшелон"
       @toggleTheme="toggleTheme"
       :style="switchThemeHeaderFooter"
@@ -8,14 +8,14 @@
     <div class="container">
       <slot />
     </div>
-    <Footer title="Footer" :style="switchThemeHeaderFooter" />
+    <FooterLayout title="Footer" :style="switchThemeHeaderFooter" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Header from '@/components/layouts/Header.vue';
-import Footer from '@/components/layouts/Footer.vue';
+import HeaderLayout from '@/components/layouts/HeaderLayout.vue';
+import FooterLayout from '@/components/layouts/FooterLayout.vue';
 import type { IMainLayoutProps } from './types';
 
 const isDark = ref(false);

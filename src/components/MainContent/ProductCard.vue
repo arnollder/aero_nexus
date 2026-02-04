@@ -12,40 +12,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject } from 'vue';
-import type { ComputedRef, CSSProperties, PropType } from 'vue';
+<script setup lang="ts">
+import { inject } from 'vue';
+import type { ComputedRef, CSSProperties } from 'vue';
+import type { IProductCardProps } from './types';
 
-interface IUser {
-  name: string;
-  model: string;
-  price: string;
-  img: string;
-  alt: string;
-}
-
-export default defineComponent({
-  name: 'ProductCard',
-  props: {
-    product: {
-      type: Object as PropType<IUser>,
-      default: () =>
-        ({
-          name: 'No Name',
-          model: 'No Brand',
-          price: '0',
-          img: 'https://static.bntu.by/bntu/new/staffs/photo_2163_8bd01886c446fc213afa7792f8f8e859.jpg',
-          alt: 'No Img',
-        }) as IUser,
-    },
-  },
-  // ===== INJECT =====
-  // == provide from MainView ==
-  setup() {
-    const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
-    return {productStyles};
-  },
+withDefaults(defineProps<IProductCardProps>(), {
+  product: () => ({
+    name: 'No Name',
+    model: 'No Brand',
+    price: '0',
+    img: 'https://static.bntu.by/bntu/new/staffs/photo_2163_8bd01886c446fc213afa7792f8f8e859.jpg',
+    alt: 'No Img',
+  }),
 });
+
+// ===== INJECT =====
+// == provide from MainView ==
+const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
 </script>
 
 <style scoped>
@@ -58,10 +42,6 @@ export default defineComponent({
   row-gap: 10px;
   border-radius: 12px;
   overflow: auto;
-  /* box-shadow: 
-        0 0 5px rgba(2, 235, 21, 0.5),
-        0 0 10px rgba(2, 235, 21, 0.5),
-        0 0 15px rgba(2, 235, 21, 0.7); */
   box-shadow:
     8px 8px 16px rgb(4, 119, 13),
     inset -1px -1px 10px rgba(2, 235, 21, 0.7),

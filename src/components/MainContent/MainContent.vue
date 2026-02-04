@@ -50,9 +50,9 @@
 </template>
 
 <script setup lang="ts">
-import type { IMainContentProps  } from './types';
-import ClickCounter from '@/components/ClickCounter.vue';
-import ProductCard from '@/components/ProductCard.vue';
+import type { IMainContentProps } from './types';
+import ClickCounter from '@/components/MainContent/ClickCounter.vue';
+import ProductCard from '@/components/MainContent/ProductCard.vue';
 
 // пропсы
 defineProps<IMainContentProps>();
