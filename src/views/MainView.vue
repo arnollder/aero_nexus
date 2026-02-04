@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import MainContent from '@/components/composition/MainContent.vue';
-import MainLayout from '@/components/composition/layouts/MainLayout.vue';
-import SidebarNav from '@/components/composition/SidebarNav.vue';
+import MainContent from '@/components/MainContent.vue';
+import MainLayout from '@/components/layouts/MainLayout.vue';
+import SidebarNav from '@/components/SidebarNav.vue';
 import { ref, computed, type CSSProperties, provide } from 'vue';
 
 const isDarkTheme = ref(false);

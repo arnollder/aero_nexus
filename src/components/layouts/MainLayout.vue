@@ -14,8 +14,8 @@
 
 <script setup lang="ts">
 import { type PropType, type CSSProperties, ref } from 'vue';
-import HeaderV from '@/components/composition/HeaderV.vue';
-import VFooter from '@/components/composition/VFooter.vue';
+import HeaderV from '@/components/HeaderV.vue';
+import VFooter from '@/components/VFooter.vue';
 
 const isDark = ref(false);
 

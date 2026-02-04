@@ -66,7 +66,7 @@
 
 <script setup lang="ts">
 import { type PropType, type CSSProperties } from 'vue';
-import ClickCounter from '@/components/composition/ClickCounter.vue';
+import ClickCounter from '@/components/ClickCounter.vue';
 import ProductCard from '@/components/ProductCard.vue';
 
 // const isMainPageTitleGreen = ref(false);
