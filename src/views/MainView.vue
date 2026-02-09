@@ -2,7 +2,6 @@
   <div :style="pageBackground">
     <MainLayout
       @toggleTheme="toggleTheme"
-      :switchThemeMain="switchThemeMain"
       :statusDark="statusDark"
     >
       <MainContent
@@ -37,11 +36,6 @@ const themeStylesSection = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(255, 255, 255, 0.3)',
     color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
-const switchThemeMain = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(169, 169, 169, 0.5)' : undefined,
   };
 });
 
