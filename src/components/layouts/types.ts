@@ -2,7 +2,7 @@ import type { CSSProperties } from 'vue';
 
 export interface IMainLayoutProps {
   switchThemeMain: CSSProperties;
-  switchThemeHeaderFooter: CSSProperties;
+  statusDark: boolean;
 }
 
 export interface IHeaderProps {
@@ -11,6 +11,7 @@ export interface IHeaderProps {
 
 export interface IFooterProps {
   title: string;
+  statusDark: boolean;
 }
 
 export interface IIsDarkEmit {
