@@ -3,7 +3,6 @@
     <HeaderLayout
       title="Гражданский Эшелон"
       @toggleTheme="toggleTheme"
-      :style="switchThemeHeaderFooter"
     />
     <div class="container">
       <slot />
