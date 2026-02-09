@@ -7,7 +7,7 @@
     <div class="container">
       <slot />
     </div>
-    <FooterLayout title="Footer" :style="switchThemeHeaderFooter" />
+    <FooterLayout title="Footer" :statusDark="statusDark" />
   </div>
 </template>
 

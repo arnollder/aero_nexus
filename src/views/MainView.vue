@@ -1,10 +1,9 @@
 <template>
-  <!-- <div class="page-background"> -->
   <div :style="pageBackground">
     <MainLayout
       @toggleTheme="toggleTheme"
-      :switchThemeHeaderFooter="switchThemeHeaderFooter"
       :switchThemeMain="switchThemeMain"
+      :statusDark="statusDark"
     >
       <MainContent
         class="border"
@@ -27,8 +26,11 @@ import { ref, computed, type CSSProperties, provide } from 'vue';
 
 const isDarkTheme = ref(false);
 
-// ===== PROPS =====
+// ===== EMITS =====
 const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
+
+// ===== PROPS =====
+const statusDark = computed(() => isDarkTheme.value)
 
 // вычисляемые свойства
 const themeStylesSection = computed((): CSSProperties => {
@@ -40,12 +42,6 @@ const themeStylesSection = computed((): CSSProperties => {
 const switchThemeMain = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(169, 169, 169, 0.5)' : undefined,
-  };
-});
-const switchThemeHeaderFooter = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(13, 140, 190, 0.5)',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
   };
 });
 
@@ -88,7 +84,6 @@ const pageBackground = computed(() => ({
 
 <style scoped>
 .page-background {
-  background-image: url('../assets/images/backgrounds/page_background_night.webp');
   background-size: cover;
   background-position: center;
 }
