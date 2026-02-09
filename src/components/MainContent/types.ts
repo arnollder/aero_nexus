@@ -1,9 +1,7 @@
-import type { CSSProperties } from 'vue';
-
 // === MainContent ===
 export interface IMainContentProps {
   title: string;
-  themeStylesSection: CSSProperties;
+  statusDark: boolean;
 }
 
 // === ProductCard ===

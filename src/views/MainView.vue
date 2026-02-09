@@ -7,7 +7,7 @@
       <MainContent
         class="border"
         title="Летательные аппараты"
-        :themeStylesSection="themeStylesSection"
+        :statusDark="statusDark"
       />
       <SidebarNav
         class="border"
@@ -32,12 +32,12 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 const statusDark = computed(() => isDarkTheme.value)
 
 // вычисляемые свойства
-const themeStylesSection = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(255, 255, 255, 0.3)',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
+// const themeStylesSection = computed((): CSSProperties => {
+//   return {
+//     'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(255, 255, 255, 0.3)',
+//     color: isDarkTheme.value ? 'darkgray' : 'black',
+//   };
+// });
 
 // ===== PROVIDE =====
 const stylesLinks = computed((): CSSProperties => {
