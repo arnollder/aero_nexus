@@ -1,13 +1,13 @@
 <template>
   <div class="root" :class="toggleStyles">
+    <img :src="$props.product?.img" class="avatar" alt="avatar" />
+    <slot name="clickcounter" />
     <div class="user-info" >
       <slot name="prepend" />
       <div class="name">{{ $props.product?.name }}</div>
       <div class="model">модель: {{ $props.product?.model }}</div>
       <div class="price">цена: {{ $props.product?.price }} ₽</div>
     </div>
-    <slot name="clickcounter" />
-    <img :src="$props.product?.img" class="avatar" alt="avatar" />
     <slot name="append" />
   </div>
 </template>
@@ -53,14 +53,12 @@ const toggleStyles = computed(() => ({
   color: darkgray;
 }
 .user-info {
-  border: 1px solid black;
   border-radius: 5px;
   padding-left: 5px;
 }
 .avatar {
   width: 100%;
   height: auto;
-  border: 1px solid black;
   border-radius: 5px;
 }
 .name {
