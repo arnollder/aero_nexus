@@ -12,7 +12,6 @@ interface IProduct {
   img: string;
   alt: string;
 }
-
 export interface IProductCardProps {
   product: IProduct;
   statusDark: boolean;

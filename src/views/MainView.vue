@@ -32,14 +32,6 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 const statusDark = computed(() => isDarkTheme.value)
 
 // ===== PROVIDE =====
-const productStyles = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58)' : 'white',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
-provide('productStyles', productStyles)
-
 const buttonsStyles = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(13, 140, 190)' : 'rgb(0, 183, 255)',

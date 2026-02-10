@@ -1,6 +1,6 @@
 <template>
-  <div class="user-root" :style="productStyles">
-    <div class="user-info" :style="productStyles">
+  <div class="root" :class="toggleStyles">
+    <div class="user-info" >
       <slot name="prepend" />
       <div class="name">{{ $props.product?.name }}</div>
       <div class="model">модель: {{ $props.product?.model }}</div>
@@ -13,12 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue';
-import type { ComputedRef, CSSProperties } from 'vue';
+import { computed } from 'vue';
 import type { IProductCardProps } from './types';
 
-
-withDefaults(defineProps<IProductCardProps>(), {
+const props = withDefaults(defineProps<IProductCardProps>(), {
   product: () => ({
     name: 'No Name',
     model: 'No Brand',
@@ -28,13 +26,13 @@ withDefaults(defineProps<IProductCardProps>(), {
   }),
 });
 
-// ===== INJECT =====
-// == provide from MainView ==
-const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
+const toggleStyles = computed(() => ({
+  'root-dark': props.statusDark,
+}));
 </script>
 
 <style scoped>
-.user-root {
+.root {
   width: 300px;
   padding: 10px;
   display: flex;
@@ -43,10 +41,15 @@ const productStyles = inject<ComputedRef<CSSProperties>>('productStyles');
   row-gap: 10px;
   border-radius: 12px;
   overflow: auto;
+  background-color: white;
   box-shadow:
     8px 8px 16px rgb(4, 119, 13),
     inset -1px -1px 10px rgba(2, 235, 21, 0.7),
     12px 12px 5px rgba(2, 235, 21, 0.5);
+}
+.root-dark {
+  background-color: rgba(54, 55, 58);
+  color: darkgray;
 }
 .user-info {
   border: 1px solid black;
