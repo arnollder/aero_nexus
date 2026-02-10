@@ -1,30 +1,40 @@
 <template>
-  <nav class="sidebar" :style="themeStylesSection">
+  <nav class="sidebar" :class="toggleStyles">
     <ul class="menu">
-      <li><a href="#" :style="stylesLinks">Главная</a></li>
-      <li><a href="#" :style="stylesLinks">Летательные аппараты</a></li>
-      <li><a href="#" :style="stylesLinks">Парашютные системы</a></li>
-      <li><a href="#" :style="stylesLinks">Школа пилотирования</a></li>
+      <li><a href="#" :class="toggleLinksStyles">Главная</a></li>
+      <li><a href="#" :class="toggleLinksStyles">Летательные аппараты</a></li>
+      <li><a href="#" :class="toggleLinksStyles">Парашютные системы</a></li>
+      <li><a href="#" :class="toggleLinksStyles">Школа пилотирования</a></li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue';
-import type { CSSProperties, ComputedRef } from 'vue';
+import { computed } from 'vue';
 import type { ISidebarNavProps } from './types';
 
-defineProps<ISidebarNavProps>();
+const props = defineProps<ISidebarNavProps>();
 
-// ===== INJECT =====
-// == provide from MainView ==
-const stylesLinks = inject<ComputedRef<CSSProperties>>('stylesLinks');
+const toggleStyles = computed(() => ({
+  'sidebar-dark': props.statusDark,
+}));
+
+const toggleLinksStyles = computed(() => ({
+  'links': true,
+  'links-dark': props.statusDark,
+}));
+
 </script>
 
 <style scoped>
 .sidebar {
   padding: 10px;
   color: inherit;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.sidebar-dark {
+  background-color: rgba(54, 55, 58, 0.5);
+  color: darkgray;
 }
 .menu {
   list-style: none;
@@ -32,7 +42,11 @@ const stylesLinks = inject<ComputedRef<CSSProperties>>('stylesLinks');
 li {
   margin: 5px;
 }
-a {
+.links {
   color: black;
+}
+.links-dark {
+  background-color: 'transparent';
+  color: darkgray;
 }
 </style>

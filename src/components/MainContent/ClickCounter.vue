@@ -52,7 +52,6 @@ button {
   border: 0;
   border-radius: 50px;
   cursor: pointer;
-  /* border: 3px solid; */
 }
 button:hover {
   border: 2px solid aliceblue;

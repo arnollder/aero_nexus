@@ -1,5 +1,5 @@
 <template>
-  <div class="content" :style="themeStylesSection">
+  <div class="content" :class="toggleStyles">
     <section>
       <h1>{{ title }}</h1>
     </section>
@@ -50,12 +50,16 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import type { IMainContentProps } from './types';
 import ClickCounter from '@/components/MainContent/ClickCounter.vue';
 import ProductCard from '@/components/MainContent/ProductCard.vue';
 
 // пропсы
-defineProps<IMainContentProps>();
+const props = defineProps<IMainContentProps>();
+const toggleStyles = computed(() => ({
+  'content-dark': props.statusDark,
+}));
 </script>
 
 <style scoped>
@@ -66,6 +70,12 @@ defineProps<IMainContentProps>();
   align-items: center;
   padding: 10px;
   flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: dark;
+}
+.content-dark {
+  background-color: rgba(54, 55, 58, 0.5);
+  color: darkgray;
 }
 .user-blok {
   margin-top: 15px;

@@ -1,9 +1,6 @@
 <template>
-  <div class="root" :style="switchThemeMain">
-    <HeaderLayout
-      title="Гражданский Эшелон"
-      @toggleTheme="toggleTheme"
-    />
+  <div class="root" :class="toggleStyles">
+    <HeaderLayout title="Гражданский Эшелон" @toggleTheme="toggleTheme" />
     <div class="container">
       <slot />
     </div>
@@ -12,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import HeaderLayout from '@/components/layouts/HeaderLayout.vue';
 import FooterLayout from '@/components/layouts/FooterLayout.vue';
 import type { IIsDarkEmit, IMainLayoutProps } from './types';
@@ -30,6 +27,10 @@ const toggleTheme = (event: boolean) => {
   isDark.value = event;
   emit('toggleTheme', isDark.value);
 };
+
+const toggleStyles = computed(() => ({
+  'root-dark': isDark.value,
+}));
 </script>
 
 <style scoped>
@@ -38,6 +39,9 @@ const toggleTheme = (event: boolean) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.root-dark {
+  background-color: rgba(169, 169, 169, 0.5);
 }
 .container {
   display: flex;

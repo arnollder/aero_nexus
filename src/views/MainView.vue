@@ -2,18 +2,16 @@
   <div :style="pageBackground">
     <MainLayout
       @toggleTheme="toggleTheme"
-      :switchThemeHeaderFooter="switchThemeHeaderFooter"
-      :switchThemeMain="switchThemeMain"
       :statusDark="statusDark"
     >
       <MainContent
         class="border"
         title="Летательные аппараты"
-        :themeStylesSection="themeStylesSection"
+        :statusDark="statusDark"
       />
       <SidebarNav
         class="border"
-        :themeStylesSection="themeStylesSection"
+        :statusDark="statusDark"
       />
     </MainLayout>
   </div>
@@ -33,34 +31,7 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 // ===== PROPS =====
 const statusDark = computed(() => isDarkTheme.value)
 
-// вычисляемые свойства
-const themeStylesSection = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(255, 255, 255, 0.3)',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
-const switchThemeMain = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(169, 169, 169, 0.5)' : undefined,
-  };
-});
-const switchThemeHeaderFooter = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(54, 55, 58, 0.5)' : 'rgba(13, 140, 190, 0.5)',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
-
 // ===== PROVIDE =====
-const stylesLinks = computed((): CSSProperties => {
-  return {
-    'background-color': 'transparent',
-    color: isDarkTheme.value ? 'darkgray' : 'black',
-  };
-});
-provide('stylesLinks', stylesLinks)
-
 const productStyles = computed((): CSSProperties => {
   return {
     'background-color': isDarkTheme.value ? 'rgba(54, 55, 58)' : 'white',

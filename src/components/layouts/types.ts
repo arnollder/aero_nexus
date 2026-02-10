@@ -1,7 +1,4 @@
-import type { CSSProperties } from 'vue';
-
 export interface IMainLayoutProps {
-  switchThemeMain: CSSProperties;
   statusDark: boolean;
 }
 
