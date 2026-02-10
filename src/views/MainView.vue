@@ -1,5 +1,5 @@
 <template>
-  <div :style="pageBackground">
+  <div :class="toggleStyles">
     <MainLayout
       @toggleTheme="toggleTheme"
       :statusDark="statusDark"
@@ -32,22 +32,20 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 const statusDark = computed(() => isDarkTheme.value)
 
 // ===== ВЫЧИСЛЯЮ БЭКГРАУНД СТРАНИЦЫ =====
-const pageBackgroundUrl = computed(() =>isDarkTheme.value === false
-  ? '/src/assets/images/backgrounds/page_background.webp'
-  : '/src/assets/images/backgrounds/page_background_night.webp',
-);
-
-const pageBackground = computed(() => ({
-  backgroundImage: `url(${pageBackgroundUrl.value})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-}));
+const toggleStyles = computed(() => ({
+  'root': true,
+  'root-dark': isDarkTheme,
+}))
 </script>
 
 <style scoped>
-.page-background {
+.root {
+  background-image: url('/src/assets/images/backgrounds/page_background.webp');
   background-size: cover;
   background-position: center;
+}
+.root-dark {
+  background-image: url('/src/assets/images/backgrounds/page_background_night.webp');
 }
 .border {
   border: 3px solid gray;
