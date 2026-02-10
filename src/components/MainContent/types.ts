@@ -15,4 +15,5 @@ interface IProduct {
 
 export interface IProductCardProps {
   product: IProduct;
+  statusDark: boolean;
 }

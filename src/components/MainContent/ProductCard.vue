@@ -17,6 +17,7 @@ import { inject } from 'vue';
 import type { ComputedRef, CSSProperties } from 'vue';
 import type { IProductCardProps } from './types';
 
+
 withDefaults(defineProps<IProductCardProps>(), {
   product: () => ({
     name: 'No Name',
