@@ -8,6 +8,7 @@ import type { IFooterProps } from './types';
 
 const props = defineProps<IFooterProps>();
 
+// ===== смена темы =====
 const toggleStyles = computed(() => ({
   footer: true,
   'footer-dark': props.statusDark,

@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<IProductCardProps>(), {
   }),
 });
 
+// ===== изменение темы =====
 const toggleStyles = computed(() => ({
   'root-dark': props.statusDark,
 }));

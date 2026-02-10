@@ -2,17 +2,17 @@
   <div>
     <div class="add">
       <div class="basket">
-        <button class="btn" :style="buttonsStyles" @click="decrement">-</button>
+        <button :class="toggleButtonsStyles" @click="decrement">-</button>
         <div>{{ count }} шт.</div>
-        <button class="btn" :style="buttonsStyles" @click="increment">+</button>
+        <button :class="toggleButtonsStyles" @click="increment">+</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject, ref } from 'vue';
-import type { CSSProperties, ComputedRef } from 'vue';
+import { ref, computed } from 'vue';
+import type { IClickCounterProps } from './types';
 
 const count = ref(0);
 
@@ -24,9 +24,14 @@ const decrement = () => {
   }
 }
 
-// ===== INJECT =====
-// == provide from MainView ==
-const buttonsStyles = inject<ComputedRef<CSSProperties>>('buttonsStyles'); 
+const props = defineProps<IClickCounterProps>();
+
+// ===== смена темы =====
+const toggleButtonsStyles = computed(() => ({
+  'btn': true,
+  'btn-dark': props.statusDark,
+}));
+
 </script>
 
 <style scoped>
@@ -63,9 +68,9 @@ button:hover {
   justify-content: center;
   color: aliceblue;
   font-size: 32px;
+  background-color: rgb(0, 183, 255);
 }
-.btn-delete {
-  margin-left: 5px;
-  background-color: rgba(165, 42, 42, 0.9);
+.btn-dark {
+  background-color: green;
 }
 </style>

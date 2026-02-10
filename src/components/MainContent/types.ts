@@ -16,3 +16,7 @@ export interface IProductCardProps {
   product: IProduct;
   statusDark: boolean;
 }
+
+export interface IClickCounterProps {
+  statusDark: boolean;
+}

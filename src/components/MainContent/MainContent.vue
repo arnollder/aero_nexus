@@ -16,7 +16,7 @@
           :statusDark="statusDark"
         >
           <template #clickcounter>
-            <ClickCounter />
+            <ClickCounter :statusDark="statusDark"/>
           </template>
         </ProductCard>
         <ProductCard
@@ -30,7 +30,7 @@
           :statusDark="statusDark"
         >
           <template #clickcounter>
-            <ClickCounter />
+            <ClickCounter :statusDark="statusDark"/>
           </template>
         </ProductCard>
         <ProductCard
@@ -44,7 +44,7 @@
           :statusDark="statusDark"
         >
           <template #clickcounter>
-            <ClickCounter />
+            <ClickCounter :statusDark="statusDark"/>
           </template>
         </ProductCard>
       </div>
@@ -60,6 +60,8 @@ import ProductCard from '@/components/MainContent/ProductCard.vue';
 
 // пропсы
 const props = defineProps<IMainContentProps>();
+
+// ===== смена темы =====
 const toggleStyles = computed(() => ({
   'content-dark': props.statusDark,
 }));

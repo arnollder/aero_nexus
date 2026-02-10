@@ -28,6 +28,7 @@ const toggleTheme = (event: boolean) => {
   emit('toggleTheme', isDark.value);
 };
 
+// ===== смена темы =====
 const toggleStyles = computed(() => ({
   'root-dark': isDark.value,
 }));

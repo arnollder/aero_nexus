@@ -21,7 +21,7 @@
 import MainContent from '@/components/MainContent/MainContent.vue';
 import MainLayout from '@/components/layouts/MainLayout.vue';
 import SidebarNav from '@/components/SidebarNav/SidebarNav.vue';
-import { ref, computed, type CSSProperties, provide } from 'vue';
+import { ref, computed } from 'vue';
 
 const isDarkTheme = ref(false);
 
@@ -30,14 +30,6 @@ const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 
 // ===== PROPS =====
 const statusDark = computed(() => isDarkTheme.value)
-
-// ===== PROVIDE =====
-const buttonsStyles = computed((): CSSProperties => {
-  return {
-    'background-color': isDarkTheme.value ? 'rgba(13, 140, 190)' : 'rgb(0, 183, 255)',
-  };
-});
-provide('buttonsStyles', buttonsStyles)
 
 // ===== ВЫЧИСЛЯЮ БЭКГРАУНД СТРАНИЦЫ =====
 const pageBackgroundUrl = computed(() =>isDarkTheme.value === false
