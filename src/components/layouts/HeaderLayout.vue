@@ -1,5 +1,6 @@
 <template>
   <header :class="toggleStyles">
+    <img class="header-logo" src="/src/assets/images/airplane-icon.png" alt="">
     {{ title }}
     <button :class="toggleButtonsStyles" @click="toggleTheme">Switch Theme</button>
   </header>
@@ -42,7 +43,9 @@ const toggleButtonsStyles = computed(() => ({
   justify-content: center;
   align-items: center;
 }
-
+.header-logo {
+  width: 200px;
+}
 .header-dark {
   background-color: rgba(54, 55, 58, 0.5);
   color: darkgray;

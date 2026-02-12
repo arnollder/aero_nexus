@@ -1,18 +1,13 @@
 <template>
   <div :class="toggleStyles">
-    <MainLayout
-      @toggleTheme="toggleTheme"
-      :statusDark="statusDark"
-    >
-      <MainContent
-        class="border"
-        title="Летательные аппараты"
-        :statusDark="statusDark"
-      />
-      <SidebarNav
-        class="border"
-        :statusDark="statusDark"
-      />
+    <MainLayout @toggleTheme="toggleTheme" :statusDark="statusDark">
+      <MainContent class="border" title="Летательные аппараты" :statusDark="statusDark">
+      </MainContent>
+      <button class="sidebar_open_close" @click="toggleSidebar">
+        <img v-if="!isSidebar" class="open-close" src="/src/assets/images/buttons/sidebar_open.png" alt="" />
+        <img v-if="isSidebar" class="open-close" src="/src/assets/images/buttons/sidebar_close.png" alt="" />
+      </button>
+      <SidebarNav v-if="isSidebar" class="border" :statusDark="statusDark" />
     </MainLayout>
   </div>
 </template>
@@ -29,13 +24,20 @@ const isDarkTheme = ref(false);
 const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
 
 // ===== PROPS =====
-const statusDark = computed(() => isDarkTheme.value)
+const statusDark = computed(() => isDarkTheme.value);
 
 // ===== ВЫЧИСЛЯЮ БЭКГРАУНД СТРАНИЦЫ =====
 const toggleStyles = computed(() => ({
-  'root': true,
+  root: true,
   'root-dark': isDarkTheme,
-}))
+}));
+
+// ===== SIDEBAR =====
+const isSidebar = ref(false);
+const toggleSidebar = () => {
+  isSidebar.value = !isSidebar.value;
+};
+// const isSidebarImg = computed(() => (isSidebar ? '/src/assets/images/buttons/sidebar_open.png' : '/src/assets/images/buttons/sidebar_close.png'))
 </script>
 
 <style scoped>
@@ -50,5 +52,11 @@ const toggleStyles = computed(() => ({
 .border {
   border: 3px solid gray;
   color: rgb(54, 55, 58);
+}
+.sidebar_open_close {
+  all: unset;
+}
+.open-close {
+  width: 30px;
 }
 </style>

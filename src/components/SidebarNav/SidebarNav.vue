@@ -1,4 +1,4 @@
-<template>
+<template>  
   <nav class="sidebar" :class="toggleStyles">
     <ul class="menu">
       <li><a href="#" :class="toggleLinksStyles">Главная</a></li>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import type { ISidebarNavProps } from './types';
 
 const props = defineProps<ISidebarNavProps>();
@@ -20,10 +20,9 @@ const toggleStyles = computed(() => ({
 }));
 
 const toggleLinksStyles = computed(() => ({
-  'links': true,
+  links: true,
   'links-dark': props.statusDark,
 }));
-
 </script>
 
 <style scoped>
@@ -48,5 +47,12 @@ li {
 .links-dark {
   background-color: 'transparent';
   color: darkgray;
+}
+
+.sidebar_open_close {
+  all: unset
+}
+.open-close {
+  width: 30px;
 }
 </style>
