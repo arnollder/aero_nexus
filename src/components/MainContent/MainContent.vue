@@ -4,22 +4,18 @@
       <h1 :class="toggleTitleStyles">{{ title }}</h1>
     </section>
     <section>
-      <div class="user-blok">
+      <div class="product-blok">
         <ProductCard
-          :product="{
-            name: 'Самолёт',
-            model: 'Ил-103',
-            price: '14 000 000',
-            img: 'https://80.img.avito.st/image/1/1.mCLxM7a4NMvHmvbOzR3XNPOSNs1PkrbDh5c2yUGaPMFH.F_uNFpE1Q7RFSyqTuOYj19zatcYWiuKFH2cL8C92mCc',
-            alt: 'Самолёт Ил-103',
-          }"
+          v-for="prod in prods"
+          :key="prod.id"
+          :product="prod"
           :statusDark="statusDark"
         >
           <template #clickcounter>
-            <ClickCounter :statusDark="statusDark"/>
+            <ClickCounter :statusDark="statusDark" />
           </template>
         </ProductCard>
-        <ProductCard
+        <!-- <ProductCard
           :product="{
             name: 'Самолёт',
             model: 'Lake-4-200',
@@ -30,7 +26,7 @@
           :statusDark="statusDark"
         >
           <template #clickcounter>
-            <ClickCounter :statusDark="statusDark"/>
+            <ClickCounter :statusDark="statusDark" />
           </template>
         </ProductCard>
         <ProductCard
@@ -44,9 +40,13 @@
           :statusDark="statusDark"
         >
           <template #clickcounter>
-            <ClickCounter :statusDark="statusDark"/>
+            <ClickCounter :statusDark="statusDark" />
           </template>
-        </ProductCard>
+        </ProductCard> -->
+      </div>
+      <div class="user-block">
+        <UserComponent />
+        <UserForm />
       </div>
     </section>
   </div>
@@ -57,17 +57,45 @@ import { computed } from 'vue';
 import type { IMainContentProps } from './types';
 import ClickCounter from '@/components/MainContent/ClickCounter.vue';
 import ProductCard from '@/components/MainContent/ProductCard.vue';
+import UserComponent from './UserComponent.vue';
+import UserForm from './UserForm.vue';
+import { prods } from '@/data/mocks/prods.mocks';
 
-// пропсы
+// ===== PROPS =====
 const props = defineProps<IMainContentProps>();
 
-// ===== смена темы =====
+// ===== TOGGLE THEME =====
 const toggleStyles = computed(() => ({
   'content-dark': props.statusDark,
 }));
 const toggleTitleStyles = computed(() => ({
   'h1-dark': props.statusDark,
 }));
+
+// ===== PRODUCTS =====
+
+// interface IProds {
+//   id: string | number,
+//   name: string,
+//   model: string,
+//   price: string,
+//   img: string,
+//   alt: string,
+//   titleAppend?: string,
+//   titlePrepend?: string,
+// }
+
+// const prods: IProds[] = [
+//   {
+//     id: 0,
+//     name: 'Самолёт',
+//     model: 'Ил-103',
+//     price: '14 000 000',
+//     img: 'https://80.img.avito.st/image/1/1.mCLxM7a4NMvHmvbOzR3XNPOSNs1PkrbDh5c2yUGaPMFH.F_uNFpE1Q7RFSyqTuOYj19zatcYWiuKFH2cL8C92mCc',
+//     alt: 'Самолёт Ил-103',
+//   },
+// ];
+
 </script>
 
 <style scoped>
@@ -88,7 +116,7 @@ const toggleTitleStyles = computed(() => ({
 .h1-dark {
   color: darkgray;
 }
-.user-blok {
+.product-blok {
   margin-top: 15px;
   display: flex;
   flex-wrap: wrap;

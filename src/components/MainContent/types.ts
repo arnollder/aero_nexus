@@ -12,6 +12,16 @@ interface IProduct {
   img: string;
   alt: string;
 }
+export interface IProds {
+  id: string | number,
+  name: string,
+  model: string,
+  price: string,
+  img: string,
+  alt: string,
+  titleAppend?: string,
+  titlePrepend?: string,
+}
 export interface IProductCardProps {
   product: IProduct;
   statusDark: boolean;
