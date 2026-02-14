@@ -71,31 +71,6 @@ const toggleStyles = computed(() => ({
 const toggleTitleStyles = computed(() => ({
   'h1-dark': props.statusDark,
 }));
-
-// ===== PRODUCTS =====
-
-// interface IProds {
-//   id: string | number,
-//   name: string,
-//   model: string,
-//   price: string,
-//   img: string,
-//   alt: string,
-//   titleAppend?: string,
-//   titlePrepend?: string,
-// }
-
-// const prods: IProds[] = [
-//   {
-//     id: 0,
-//     name: 'Самолёт',
-//     model: 'Ил-103',
-//     price: '14 000 000',
-//     img: 'https://80.img.avito.st/image/1/1.mCLxM7a4NMvHmvbOzR3XNPOSNs1PkrbDh5c2yUGaPMFH.F_uNFpE1Q7RFSyqTuOYj19zatcYWiuKFH2cL8C92mCc',
-//     alt: 'Самолёт Ил-103',
-//   },
-// ];
-
 </script>
 
 <style scoped>
@@ -118,8 +93,8 @@ const toggleTitleStyles = computed(() => ({
 }
 .product-blok {
   margin-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 30px;
 }
 </style>
