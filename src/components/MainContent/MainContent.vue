@@ -14,40 +14,15 @@
           <template #clickcounter>
             <ClickCounter :statusDark="statusDark" />
           </template>
-        </ProductCard>
-        <!-- <ProductCard
-          :product="{
-            name: 'Самолёт',
-            model: 'Lake-4-200',
-            price: '12 000 000',
-            img: 'https://00.img.avito.st/image/1/1.QvCMQra47hm66ywchFNV7vDj7B8y42wR-ubsGzzr5hM6.UyGn9HumuDOdRa2TU3psxWDizh6GlbSMByg6Xdx-07w?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ',
-            alt: 'Самолёт Lake-4-200',
-          }"
-          :statusDark="statusDark"
-        >
-          <template #clickcounter>
-            <ClickCounter :statusDark="statusDark" />
-          </template>
-        </ProductCard>
-        <ProductCard
-          :product="{
-            name: 'Самолёт',
-            model: 'Cessna 172B',
-            price: '12 500 000',
-            img: 'https://90.img.avito.st/image/1/1.B2A8Gba4q4kKsGmMPjlKGF64qY-CuCmBSr2pi4ywo4OK.eEYfp8xN_xSsdO7f4_MlCdMS2rLiUXoYYoU7jx3E0MA',
-            alt: 'Самолёт Cessna 172B',
-          }"
-          :statusDark="statusDark"
-        >
-          <template #clickcounter>
-            <ClickCounter :statusDark="statusDark" />
-          </template>
-        </ProductCard> -->
+        </ProductCard>        
       </div>
       <div class="user-block">
         <UserComponent />
         <UserForm />
       </div>
+      <news-block>
+        <NewsComponent />
+      </news-block>
     </section>
   </div>
 </template>
@@ -60,6 +35,7 @@ import ProductCard from '@/components/MainContent/ProductCard.vue';
 import UserComponent from './UserComponent.vue';
 import UserForm from './UserForm.vue';
 import { prods } from '@/data/mocks/prods.mocks';
+import NewsComponent from './NewsComponent.vue';
 
 // ===== PROPS =====
 const props = defineProps<IMainContentProps>();
