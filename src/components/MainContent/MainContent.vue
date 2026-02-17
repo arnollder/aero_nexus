@@ -15,13 +15,16 @@
         <UserComponent />
         <UserForm />
       </div>
-      <news-block>
-        <NewsComponent
-          :img="'https://resizer.mail.ru/p/30878b0f-705e-540f-aece-f4da0f5e77f8/AQAGRl_LDdtwtLkgzRc0DNPCJsq8HaUaxEncc1gdSLP_VYuZo7hDiWrKF8ff7VbHrZUNnGBl1Er8-QY2-ivxxy3gEgE.webp'"
-          :heading="'Зимняя погода влияет на рейсы: аэропорт Кишинева работает в усиленном режиме'"
-          :text="'Из-за неблагоприятных погодных условий и желтого кода возможны задержки рейсов, при этом все меры безопасности соблюдаются. В связи с суровыми погодными условиями и объявленным на текущие дни «желтым кодом» в Международный аэропорт Кишинева применяются специальные зимние процедуры, включая обязательную противообледенительную обработку воздушных судов.'"
+      <hr :style="{ marginTop: '20px' }" />
+      <div class="news-block">        
+        <NewsComponent           
+          v-for="post in news" 
+          :key="post.id"
+          :img="post.img"
+          :heading="post.heading"
+          :text="post.text"
         />
-      </news-block>
+      </div>
     </section>
   </div>
 </template>
@@ -35,6 +38,7 @@ import UserComponent from './UserComponent.vue';
 import UserForm from './UserForm.vue';
 import { prods } from '@/data/mocks/prods.mocks';
 import NewsComponent from './NewsComponent.vue';
+import { news } from '@/data/mocks/news.mocks';
 
 // ===== PROPS =====
 const props = defineProps<IMainContentProps>();
@@ -71,5 +75,10 @@ const toggleTitleStyles = computed(() => ({
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+}
+.news-block {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 15px;
 }
 </style>
