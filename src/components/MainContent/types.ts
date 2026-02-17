@@ -30,3 +30,10 @@ export interface IProductCardProps {
 export interface IClickCounterProps {
   statusDark: boolean;
 }
+
+export interface IArticle {
+  id: string | number;
+  img: string;
+  heading: string;
+  text: string;
+}

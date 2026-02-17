@@ -76,7 +76,12 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { IArticle } from './types';
+
+const props = defineProps<IArticle>();
+
+</script>
 
 <style scoped>
 .news_root {
