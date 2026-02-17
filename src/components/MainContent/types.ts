@@ -31,8 +31,8 @@ export interface IClickCounterProps {
   statusDark: boolean;
 }
 
-export interface IArticle {
-  id: string | number;
+export interface IArticleProps {
+  id?: string | number;
   img: string;
   heading: string;
   text: string;

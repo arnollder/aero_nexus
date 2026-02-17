@@ -1,6 +1,6 @@
-import type { IArticle } from '@/components/MainContent/types';
+import type { IArticleProps } from '@/components/MainContent/types';
 
-export const news: IArticle[] = [
+export const news: IArticleProps[] = [
   {
     id: 0,
     img: 'https://resizer.mail.ru/p/30878b0f-705e-540f-aece-f4da0f5e77f8/AQAGRl_LDdtwtLkgzRc0DNPCJsq8HaUaxEncc1gdSLP_VYuZo7hDiWrKF8ff7VbHrZUNnGBl1Er8-QY2-ivxxy3gEgE.webp',
