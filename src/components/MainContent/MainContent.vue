@@ -1,6 +1,5 @@
 <template>
   <div class="content" :class="toggleStyles">
-
     <h1 :class="toggleTitleStyles">{{ title }}</h1>
     <section>
       <div class="product_list">
@@ -18,6 +17,7 @@
     </section>
 
     <section class="news_block">
+      <h2 class="news_title" :class="toggleTitleStyles">Новости</h2>
       <div class="news_list">
         <NewsComponent
           v-for="article in news"
@@ -31,25 +31,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import type { IMainContentProps } from './types';
 import ClickCounter from '@/components/MainContent/ClickCounter.vue';
 import ProductCard from '@/components/MainContent/ProductCard.vue';
 import UserComponent from './UserComponent.vue';
 import UserForm from './UserForm.vue';
-import { prods } from '@/data/mocks/prods.mocks';
 import NewsComponent from './NewsComponent.vue';
+
+import type { IMainContentProps } from './types';
+
+import { prods } from '@/data/mocks/prods.mocks';
 import { news } from '@/data/mocks/news.mocks';
+
+import { computed } from 'vue';
 
 // ===== PROPS =====
 const props = defineProps<IMainContentProps>();
 
 // ===== TOGGLE THEME =====
 const toggleStyles = computed(() => ({
-  'content_dark': props.statusDark,
+  content_dark: props.statusDark,
 }));
 const toggleTitleStyles = computed(() => ({
-  'h1_dark': props.statusDark,
+  h1_dark: props.statusDark,
 }));
 </script>
 
@@ -76,6 +79,15 @@ const toggleTitleStyles = computed(() => ({
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+}
+.news_block {
+  display: flex;
+  flex-direction: column;
+}
+.news_title {
+  margin: auto;
+  margin-top: 15px;
+  font-size: 32px;
 }
 .news_list {
   display: grid;
