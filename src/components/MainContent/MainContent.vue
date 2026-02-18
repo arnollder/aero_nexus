@@ -26,7 +26,10 @@
           :statusDark="statusDark"
         />
       </div>
-      <button class="news_button">...читать далее</button>
+      <button 
+        class="news_button"
+        @click="moreNews"
+      >...читать далее</button>
     </section>
   </div>
 </template>
@@ -43,7 +46,7 @@ import type { IMainContentProps } from './types';
 import { prods } from '@/data/mocks/prods.mocks';
 import { news } from '@/data/mocks/news.mocks';
 
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 // ===== PROPS =====
 const props = defineProps<IMainContentProps>();
@@ -57,11 +60,15 @@ const toggleTitleStyles = computed(() => ({
 }));
 
 // ===== NEWS BLOCK =====
-const newsFirstTwo = computed(() => news.slice(0, 2));
+const newsList = ref(news.slice(0, 2))
+const moreNews = () => newsList.value = news.slice(0, 10)
+
+
+// const newsFirstTwo = computed(() => news.slice(0, 2));
 // const newsAll = computed(() => news);
 // const newsFirstTen = computed(() => news.slice(0, 10));
 
-const newsList = newsFirstTwo;
+// newsList.value = newsFirstTwo;
 
 </script>
 
