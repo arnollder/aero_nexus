@@ -1,10 +1,9 @@
 <template>
   <div class="content" :class="toggleStyles">
+
+    <h1 :class="toggleTitleStyles">{{ title }}</h1>
     <section>
-      <h1 :class="toggleTitleStyles">{{ title }}</h1>
-    </section>
-    <section>
-      <div class="product-blok">
+      <div class="product_list">
         <ProductCard v-for="prod in prods" :key="prod.id" :product="prod" :statusDark="statusDark">
           <template #clickcounter>
             <ClickCounter :statusDark="statusDark" />
@@ -16,11 +15,14 @@
         <UserForm />
       </div>
       <hr :style="{ marginTop: '20px' }" />
-      <div class="news-block">        
-        <NewsComponent           
-          v-for="article in news" 
+    </section>
+
+    <section class="news_block">
+      <div class="news_list">
+        <NewsComponent
+          v-for="article in news"
           :key="article.id"
-          :article="article"          
+          :article="article"
           :statusDark="statusDark"
         />
       </div>
@@ -44,10 +46,10 @@ const props = defineProps<IMainContentProps>();
 
 // ===== TOGGLE THEME =====
 const toggleStyles = computed(() => ({
-  'content-dark': props.statusDark,
+  'content_dark': props.statusDark,
 }));
 const toggleTitleStyles = computed(() => ({
-  'h1-dark': props.statusDark,
+  'h1_dark': props.statusDark,
 }));
 </script>
 
@@ -62,20 +64,20 @@ const toggleTitleStyles = computed(() => ({
   background-color: rgba(255, 255, 255, 0.3);
   color: dark;
 }
-.content-dark {
+.content_dark {
   background-color: rgba(54, 55, 58, 0.5);
   color: darkgray;
 }
-.h1-dark {
+.h1_dark {
   color: darkgray;
 }
-.product-blok {
+.product_list {
   margin-top: 15px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
 }
-.news-block {
+.news_list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 15px;

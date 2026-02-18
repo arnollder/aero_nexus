@@ -43,10 +43,6 @@ const toggleStyles = computed(() => ({
   border-radius: 12px;
   overflow: auto;
   background-color: white;
-  /* box-shadow:
-    8px 8px 16px rgb(4, 119, 13),
-    inset -1px -1px 10px rgba(2, 235, 21, 0.7),
-    12px 12px 5px rgba(2, 235, 21, 0.5); */
 }
 .root-dark {
   background-color: rgba(54, 55, 58);
