@@ -13,14 +13,14 @@ interface IProduct {
   alt: string;
 }
 export interface IProds {
-  id: string | number,
-  name: string,
-  model: string,
-  price: string,
-  img: string,
-  alt: string,
-  titleAppend?: string,
-  titlePrepend?: string,
+  id: string | number;
+  name: string;
+  model: string;
+  price: string;
+  img: string;
+  alt: string;
+  titleAppend?: string;
+  titlePrepend?: string;
 }
 export interface IProductCardProps {
   product: IProduct;
@@ -31,9 +31,14 @@ export interface IClickCounterProps {
   statusDark: boolean;
 }
 
-export interface IArticleProps {
+export interface IArticle {
   id?: string | number;
   img: string;
   heading: string;
   text: string;
+}
+
+export interface INewsProps {
+  article: IArticle;
+  statusDark: boolean;
 }

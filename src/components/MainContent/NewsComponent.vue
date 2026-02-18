@@ -1,27 +1,31 @@
 <template>  
-    <article class="news_article">
-      <img class="news_photo" :src="$props.img" alt="news's photo" />
+    <article class="news_root">
+      <img class="news_photo" :src="$props.article?.img" alt="news's photo" />
       <div class="news_content">
-        <h3 class="news_heading">{{ $props.heading }}</h3>
-        <p class="news_text">{{ $props.text }}</p>
+        <h3 class="news_heading">{{ $props.article?.heading }}</h3>
+        <p class="news_text">{{ $props.article?.text }}</p>
       </div>
     </article>
 </template>
 
 <script setup lang="ts">
-import type { IArticleProps } from './types';
+import type { INewsProps } from './types';
 
-defineProps<IArticleProps>();
+defineProps<INewsProps>();
 
 </script>
 
 <style scoped>
-.news_article {
+.news_root {
   margin-top: 20px;
   display: flex;
   background-color: white;
   border-radius: 15px;
   width: 800px;
+}
+.root-dark {
+  background-color: rgba(54, 55, 58);
+  color: darkgray;
 }
 .news_photo {
   height: 200px;

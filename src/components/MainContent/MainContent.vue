@@ -18,11 +18,10 @@
       <hr :style="{ marginTop: '20px' }" />
       <div class="news-block">        
         <NewsComponent           
-          v-for="post in news" 
-          :key="post.id"
-          :img="post.img"
-          :heading="post.heading"
-          :text="post.text"
+          v-for="article in news" 
+          :key="article.id"
+          :article="article"          
+          :statusDark="statusDark"
         />
       </div>
     </section>
