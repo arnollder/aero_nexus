@@ -23,7 +23,6 @@ const toggleStyles = computed(() => ({
 
 <style scoped>
 .news_root {
-  margin-top: 20px;
   padding: 10px;
   display: flex;
   background-color: white;

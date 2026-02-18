@@ -20,12 +20,13 @@
       <h2 class="news_title" :class="toggleTitleStyles">Новости</h2>
       <div class="news_list">
         <NewsComponent
-          v-for="article in news"
+          v-for="article in newsList"
           :key="article.id"
           :article="article"
           :statusDark="statusDark"
         />
       </div>
+      <button class="news_button">...читать далее</button>
     </section>
   </div>
 </template>
@@ -54,6 +55,14 @@ const toggleStyles = computed(() => ({
 const toggleTitleStyles = computed(() => ({
   h1_dark: props.statusDark,
 }));
+
+// ===== NEWS BLOCK =====
+const newsFirstTwo = computed(() => news.slice(0, 2));
+// const newsAll = computed(() => news);
+// const newsFirstTen = computed(() => news.slice(0, 10));
+
+const newsList = newsFirstTwo;
+
 </script>
 
 <style scoped>
@@ -83,6 +92,7 @@ const toggleTitleStyles = computed(() => ({
 .news_block {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 .news_title {
   margin: auto;
@@ -92,6 +102,6 @@ const toggleTitleStyles = computed(() => ({
 .news_list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 15px;
+  gap: 15px;
 }
 </style>
