@@ -40,12 +40,14 @@ const toggleSidebar = () => {
 
 <style scoped>
 .root {
-  background-image: url('/src/assets/images/backgrounds/page_background.webp');
+  /* background-image: url('/src/assets/images/backgrounds/page_background.webp'); */
+  background-color: beige;
   background-size: cover;
   background-position: center;
 }
 .root-dark {
-  background-image: url('/src/assets/images/backgrounds/page_background_night.webp');
+  /* background-image: url('/src/assets/images/backgrounds/page_background_night.webp'); */
+  background-color: black;
 }
 .border {
   border: 3px solid gray;

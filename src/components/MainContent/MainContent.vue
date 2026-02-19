@@ -9,10 +9,6 @@
           </template>
         </ProductCard>
       </div>
-      <div class="user-block">
-        <UserComponent />
-        <UserForm />
-      </div>
       <hr :style="{ marginTop: '20px' }" />
     </section>
 
@@ -26,10 +22,15 @@
           :statusDark="statusDark"
         />
       </div>
-      <button 
-        class="news_button"
-        @click="moreNews"
-      >...читать далее</button>
+      <button v-if="newsList.length == 2" class="news_button" :class="toggleStyles" @click="newsMore">
+        читать далее
+      </button>
+      <button v-else-if="newsList.length == 10" class="news_button" :class="toggleStyles" @click="newsAll">
+        показать все
+      </button>
+      <button v-else class="news_button" :class="toggleStyles" @click="newsStart">
+        свернуть все
+      </button>
     </section>
   </div>
 </template>
@@ -37,8 +38,6 @@
 <script setup lang="ts">
 import ClickCounter from '@/components/MainContent/ClickCounter.vue';
 import ProductCard from '@/components/MainContent/ProductCard.vue';
-import UserComponent from './UserComponent.vue';
-import UserForm from './UserForm.vue';
 import NewsComponent from './NewsComponent.vue';
 
 import type { IMainContentProps } from './types';
@@ -60,16 +59,11 @@ const toggleTitleStyles = computed(() => ({
 }));
 
 // ===== NEWS BLOCK =====
-const newsList = ref(news.slice(0, 2))
-const moreNews = () => newsList.value = news.slice(0, 10)
+const newsList = ref(news.slice(0, 2));
 
-
-// const newsFirstTwo = computed(() => news.slice(0, 2));
-// const newsAll = computed(() => news);
-// const newsFirstTen = computed(() => news.slice(0, 10));
-
-// newsList.value = newsFirstTwo;
-
+const newsStart = () => (newsList.value = news.slice(0, 2))
+const newsMore = () => (newsList.value = news.slice(0, 10));
+const newsAll = () => (newsList.value = news);
 </script>
 
 <style scoped>
@@ -110,5 +104,14 @@ const moreNews = () => newsList.value = news.slice(0, 10)
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
+}
+.news_button {
+  margin: auto;
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
 }
 </style>

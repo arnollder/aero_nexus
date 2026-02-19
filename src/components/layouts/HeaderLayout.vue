@@ -1,6 +1,6 @@
 <template>
   <header :class="toggleStyles">
-    <img class="header-logo" src="/src/assets/images/airplane-icon.png" alt="">
+    <img class="header-logo" src="/src/assets/images/airplane-icon.svg" alt="">
     {{ title }}
     <button :class="toggleButtonsStyles" @click="toggleTheme">Switch Theme</button>
   </header>
