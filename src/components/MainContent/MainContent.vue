@@ -113,5 +113,6 @@ const newsAll = () => (newsList.value = news);
   border: 0;
   border-radius: 10px;
   font-size: 16px;
+  background-color: rgba(13, 140, 190, 0.5);
 }
 </style>
