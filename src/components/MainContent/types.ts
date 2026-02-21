@@ -38,7 +38,15 @@ export interface IArticle {
   text: string;
 }
 
+export interface IData {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
 export interface INewsProps {
-  article: IArticle;
+  // article: IArticle;
+  article: IData;
   statusDark: boolean;
 }

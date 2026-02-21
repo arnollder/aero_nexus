@@ -16,16 +16,26 @@
       <h2 class="news_title" :class="toggleTitleStyles">Новости</h2>
       <div class="news_list">
         <NewsComponent
-          v-for="article in newsList"
+          v-for="article in displayedNews"
           :key="article.id"
           :article="article"
           :statusDark="statusDark"
         />
       </div>
-      <button v-if="newsList.length == 2" class="news_button" :class="toggleStyles" @click="newsMore">
+      <button
+        v-if="newsCount == 2"
+        class="news_button"
+        :class="toggleStyles"
+        @click="newsMore"
+      >
         читать далее
       </button>
-      <button v-else-if="newsList.length == 10" class="news_button" :class="toggleStyles" @click="newsAll">
+      <button
+        v-else-if="newsCount == 10"
+        class="news_button"
+        :class="toggleStyles"
+        @click="newsAll"
+      >
         показать все
       </button>
       <button v-else class="news_button" :class="toggleStyles" @click="newsStart">
@@ -43,9 +53,9 @@ import NewsComponent from './NewsComponent.vue';
 import type { IMainContentProps } from './types';
 
 import { prods } from '@/data/mocks/prods.mocks';
-import { news } from '@/data/mocks/news.mocks';
+// import { news } from '@/data/mocks/news.mocks';
 
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 
 // ===== PROPS =====
 const props = defineProps<IMainContentProps>();
@@ -59,11 +69,47 @@ const toggleTitleStyles = computed(() => ({
 }));
 
 // ===== NEWS BLOCK =====
-const newsList = ref(news.slice(0, 2));
 
-const newsStart = () => (newsList.value = news.slice(0, 2))
-const newsMore = () => (newsList.value = news.slice(0, 10));
-const newsAll = () => (newsList.value = news);
+// этот код я пока оставлю, хочу картинки из этого массива присваивать к постам массива, который прилетает с сервера
+
+// const newsList = ref(news.slice(0, 2));
+
+// const newsStart = () => (newsList.value = news.slice(0, 2));
+// const newsMore = () => (newsList.value = news.slice(0, 10));
+// const newsAll = () => (newsList.value = news);
+
+const data = ref();
+const loading = ref(true);
+const error = ref();
+
+onMounted(async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    data.value = await response.json();
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : 'Что-то пошло не по плану...';
+  } finally {
+    loading.value = false;
+  }
+});
+
+const newsCount = ref(2)
+
+const displayedNews = computed(() => {
+  if (!data.value) return [];
+  if (newsCount.value === data.value) return data.value;
+  return data.value.slice(0, newsCount.value);
+});
+
+const newsStart = () => newsCount.value = 2;
+const newsMore = () => newsCount.value = 10;
+const newsAll = () => newsCount.value = data.value;
+
 </script>
 
 <style scoped>
