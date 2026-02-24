@@ -38,7 +38,7 @@ export interface IArticle {
   text: string;
 }
 
-export interface IData {
+interface IData {
   userId: number;
   id: number;
   title: string;
