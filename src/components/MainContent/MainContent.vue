@@ -26,9 +26,9 @@
             :statusDark="statusDark"
           />
         </div>
-  
+
         <button v-if="newsCount == 2" class="news_button" :class="toggleStyles" @click="newsMore">
-          читать далее
+          читать далее...
         </button>
         <button
           v-else-if="newsCount == 10"
@@ -36,7 +36,7 @@
           :class="toggleStyles"
           @click="newsAll"
         >
-          показать все
+          показать все...
         </button>
         <button v-else class="news_button" :class="toggleStyles" @click="newsStart">
           свернуть все
@@ -64,6 +64,7 @@ const props = defineProps<IMainContentProps>();
 // ===== TOGGLE THEME =====
 const toggleStyles = computed(() => ({
   content_dark: props.statusDark,
+  news_button_dark: props.statusDark,
 }));
 const toggleTitleStyles = computed(() => ({
   h1_dark: props.statusDark,
@@ -114,11 +115,22 @@ const { loading, error, newsCount, displayedNews, newsStart, newsMore, newsAll }
 }
 .news_button {
   margin: auto;
-  padding: 10px;
-  width: 200px;
-  height: 50px;
+  padding: 5px 10px;
+
   border: 0;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 16px;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgb(0, 68, 255);
+}
+.news_button:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.news_button_dark {
+  color: darkgray;
+}
+.news_button_dark:hover {
+  background-color: rgba(54, 55, 58, 0.5);
 }
 </style>

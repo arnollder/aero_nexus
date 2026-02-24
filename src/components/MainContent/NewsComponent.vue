@@ -1,7 +1,6 @@
 <template>  
     <article class="news_root" :class="toggleStyles">
       <img class="news_icon" src="../../assets/images/news.jpg" alt="news icon">
-      <!-- <img class="news_photo" :src="$props.article?.img" alt="news's photo" /> -->
       <div class="news_content">
         <h3 class="news_heading">{{ $props.article?.title }}</h3>
         <p class="news_text">{{ $props.article?.body }}</p>
