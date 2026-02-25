@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="add">
-      <div class="basket">
+      <div class="counter">
         <button :class="toggleButtonsStyles" @click="decrement">-</button>
         <div>{{ count }} шт.</div>
         <button :class="toggleButtonsStyles" @click="increment">+</button>
       </div>
+      <button class="add_basket" :class="toggleAddBasketStyles" >Добавить</button>
     </div>
   </div>
 </template>
@@ -24,13 +25,17 @@ const decrement = () => {
   }
 }
 
+// ===== PROPS =====
 const props = defineProps<IClickCounterProps>();
 
-// ===== смена темы =====
+// ===== TOGGLE STYLES =====
 const toggleButtonsStyles = computed(() => ({
   'btn': true,
-  'btn-dark': props.statusDark,
+  'btn_dark': props.statusDark,
 }));
+const toggleAddBasketStyles = computed(() => ({
+  'add_basket_dark': props.statusDark,  
+}))
 
 </script>
 
@@ -38,10 +43,9 @@ const toggleButtonsStyles = computed(() => ({
 .add {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
-  margin-right: 10px;
+  justify-content: space-between;
 }
-.basket {
+.counter {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -62,6 +66,15 @@ button:hover {
   border: 2px solid aliceblue;
   font-weight: 700;
 }
+.add_basket {
+  width: 100px;
+  padding: 5px;
+  background-color: rgb(44, 172, 44);
+}
+.add_basket_dark {
+  color: white;
+  background-color: green;
+}
 .btn {
   display: flex;
   align-items: center;
@@ -70,7 +83,7 @@ button:hover {
   font-size: 32px;
   background-color: rgb(0, 183, 255);
 }
-.btn-dark {
+.btn_dark {
   background-color: green;
 }
 </style>

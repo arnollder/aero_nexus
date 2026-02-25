@@ -40,13 +40,11 @@ const toggleSidebar = () => {
 
 <style scoped>
 .root {
-  /* background-image: url('/src/assets/images/backgrounds/page_background.webp'); */
   background-color: beige;
   background-size: cover;
   background-position: center;
 }
 .root-dark {
-  /* background-image: url('/src/assets/images/backgrounds/page_background_night.webp'); */
   background-color: black;
 }
 .border {
@@ -54,6 +52,7 @@ const toggleSidebar = () => {
   color: rgb(54, 55, 58);
 }
 .sidebar_open_close {
+  margin-top: 0;
   all: unset;
 }
 .open-close {
