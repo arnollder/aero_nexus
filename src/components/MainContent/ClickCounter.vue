@@ -6,7 +6,7 @@
         <div>{{ count }} шт.</div>
         <button :class="toggleButtonsStyles" @click="increment">+</button>
       </div>
-      <button class="add_cart" :class="toggleAddBasketStyles" @click="saveToLocalStorage">
+      <button class="add_cart" :class="toggleAddBasketStyles" @click="handleAddToCart">
         Добавить
       </button>
     </div>
@@ -16,8 +16,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import type { IClickCounterProps } from './types';
+import { useLocalStorage } from '@/composables/useLocalStorage';
 
+// ===== ADD TO CART =====
 const count = ref(0);
+const { saveToLocalStorage } = useLocalStorage();
+const handleAddToCart = () => saveToLocalStorage(props.product, count.value)
 
 // методы
 const increment = () => count.value++;
@@ -29,27 +33,6 @@ const decrement = () => {
 
 // ===== PROPS =====
 const props = defineProps<IClickCounterProps>();
-
-const saveToLocalStorage = () => {
-  // получаю массив объектов из localStorage или создаю пустой массив
-  const getCart = localStorage.getItem('cart');
-  const cart = getCart ? JSON.parse(getCart) : [];
-
-  // создаю объект для добавления в массив
-  const newItem = {
-    id: props.product.id,
-    name: props.product.name,
-    model: props.product.model,
-    price: props.product.price,
-    count: count.value,
-  };
-  cart.push(newItem)
-
-  // сохраняю новый объект в localStorage
-  if (count.value >= 1) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-};
 
 // ===== TOGGLE STYLES =====
 const toggleButtonsStyles = computed(() => ({

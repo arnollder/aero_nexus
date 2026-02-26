@@ -18,6 +18,7 @@ import type { IProductCardProps } from './types';
 
 const props = withDefaults(defineProps<IProductCardProps>(), {
   product: () => ({
+    id: 999,
     name: 'No Name',
     model: 'No Brand',
     price: '0',

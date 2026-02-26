@@ -6,7 +6,7 @@ export interface IMainContentProps {
 
 // === ProductCard ===
 export interface IProds {
-  id: string | number;
+  id: number;
   name: string;
   model: string;
   price: string;
