@@ -1,12 +1,4 @@
-import type { IProds } from '@/components/MainContent/types';
-
-interface ICartItem {
-  id: number;
-  name: string;
-  model: string;
-  price: string;
-  count: number;
-}
+import type { ICartItem, IProds } from '@/components/MainContent/types';
 
 export function useLocalStorage() {
   const saveToLocalStorage = (product: IProds, count: number) => {
@@ -21,16 +13,16 @@ export function useLocalStorage() {
       model: product.model,
       price: product.price,
       count: count,
-    };    
-    
+    };
+
     // сохраняю новый объект в localStorage
     if (count >= 1) {
       cart.push(newItem);
       localStorage.setItem('cart', JSON.stringify(cart));
     }
   };
-  
+
   return {
-    saveToLocalStorage
+    saveToLocalStorage,
   };
 }

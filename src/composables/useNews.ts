@@ -1,11 +1,5 @@
+import type { INewsItem } from '@/components/MainContent/types';
 import { ref, computed, onMounted, readonly } from 'vue';
-
-interface INewsItem {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
 
 export const useNews = (initialCount = 2) => {
   const data = ref<INewsItem[]>([]);

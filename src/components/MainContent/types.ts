@@ -25,13 +25,6 @@ export interface IClickCounterProps {
   product: IProds;
 }
 
-export interface IArticle {
-  id?: string | number;
-  img: string;
-  heading: string;
-  text: string;
-}
-
 interface IData {
   userId: number;
   id: number;
@@ -40,7 +33,20 @@ interface IData {
 }
 
 export interface INewsProps {
-  // article: IArticle;
   article: IData;
   statusDark: boolean;
 }
+
+export interface INewsItem {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+  export interface ICartItem {
+    id: number;
+    name: string;
+    model: string;
+    price: string;
+    count: number;
+  }
