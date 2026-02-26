@@ -5,7 +5,7 @@
       <div class="product_list">
         <ProductCard v-for="prod in prods" :key="prod.id" :product="prod" :statusDark="statusDark">
           <template #clickcounter>
-            <ClickCounter :statusDark="statusDark" />
+            <ClickCounter :statusDark="statusDark" :product="prod" />
           </template>
         </ProductCard>
       </div>

@@ -5,13 +5,6 @@ export interface IMainContentProps {
 }
 
 // === ProductCard ===
-interface IProduct {
-  name: string;
-  model: string;
-  price: string;
-  img: string;
-  alt: string;
-}
 export interface IProds {
   id: string | number;
   name: string;
@@ -23,12 +16,13 @@ export interface IProds {
   titlePrepend?: string;
 }
 export interface IProductCardProps {
-  product: IProduct;
+  product: IProds;
   statusDark: boolean;
 }
 
 export interface IClickCounterProps {
   statusDark: boolean;
+  product: IProds;
 }
 
 export interface IArticle {

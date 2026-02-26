@@ -6,7 +6,9 @@
         <div>{{ count }} шт.</div>
         <button :class="toggleButtonsStyles" @click="increment">+</button>
       </div>
-      <button class="add_basket" :class="toggleAddBasketStyles" >Добавить</button>
+      <button class="add_cart" :class="toggleAddBasketStyles" @click="saveToLocalStorage">
+        Добавить
+      </button>
     </div>
   </div>
 </template>
@@ -23,20 +25,40 @@ const decrement = () => {
   if (count.value > 0) {
     count.value--;
   }
-}
+};
 
 // ===== PROPS =====
 const props = defineProps<IClickCounterProps>();
 
+const saveToLocalStorage = () => {
+  // получаю массив объектов из localStorage или создаю пустой массив
+  const getCart = localStorage.getItem('cart');
+  const cart = getCart ? JSON.parse(getCart) : [];
+
+  // создаю объект для добавления в массив
+  const newItem = {
+    id: props.product.id,
+    name: props.product.name,
+    model: props.product.model,
+    price: props.product.price,
+    count: count.value,
+  };
+  cart.push(newItem)
+
+  // сохраняю новый объект в localStorage
+  if (count.value >= 1) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+};
+
 // ===== TOGGLE STYLES =====
 const toggleButtonsStyles = computed(() => ({
-  'btn': true,
-  'btn_dark': props.statusDark,
+  btn: true,
+  btn_dark: props.statusDark,
 }));
 const toggleAddBasketStyles = computed(() => ({
-  'add_basket_dark': props.statusDark,  
-}))
-
+  add_cart_dark: props.statusDark,
+}));
 </script>
 
 <style scoped>
@@ -53,7 +75,6 @@ const toggleAddBasketStyles = computed(() => ({
 
   background-color: rgba(107, 114, 136, 0.5);
   border-radius: 50px;
-
 }
 button {
   width: 55px;
@@ -66,12 +87,12 @@ button:hover {
   border: 2px solid aliceblue;
   font-weight: 700;
 }
-.add_basket {
+.add_cart {
   width: 100px;
   padding: 5px;
   background-color: rgb(44, 172, 44);
 }
-.add_basket_dark {
+.add_cart_dark {
   color: white;
   background-color: green;
 }
