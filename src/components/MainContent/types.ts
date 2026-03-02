@@ -9,7 +9,7 @@ export interface IProds {
   id: number;
   name: string;
   model: string;
-  price: string;
+  price: string | number;
   img: string;
   alt: string;
   titleAppend?: string;
@@ -47,6 +47,6 @@ export interface INewsItem {
     id: number;
     name: string;
     model: string;
-    price: string;
+    price: string | number;
     count: number;
   }
