@@ -1,10 +1,12 @@
 <template>
-  <div class="buttons">
-    <button class="btn" @click="router.push({ name: 'home' })">НА ГЛАВНУЮ</button>
-    <button class="btn" @click="router.back()">НАЗАД</button>
-    <button class="btn" @click="router.forward()">ВПЕРЕД</button>
+  <div class="posts_conteiner">
+    <div class="buttons">
+      <button class="btn" @click="router.push({ name: 'home' })">НА ГЛАВНУЮ</button>
+      <button class="btn" @click="router.back()">НАЗАД</button>
+      <button class="btn" @click="router.forward()">ВПЕРЕД</button>
+    </div>
+    <div>Posts</div>
   </div>
-  <div>Posts</div>
 </template>
 
 <script setup lang="ts">

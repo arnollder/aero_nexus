@@ -1,12 +1,13 @@
 <template>
-  <!-- <MainLayout> -->
+  <component :is="route.meta.layout || 'div'">
     <RouterView />
-  <!-- </MainLayout> -->
+  </component>
 </template>
 
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import MainLayout from './components/layouts/MainLayout.vue';
+import { RouterView, useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <style scoped>

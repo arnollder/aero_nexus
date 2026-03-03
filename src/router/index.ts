@@ -1,3 +1,4 @@
+import MainLayout from '@/components/layouts/MainLayout.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -12,11 +13,17 @@ const router = createRouter({
       path: '/posts',
       name: 'posts',
       component: () => import('@/components/NewsPosts.vue'),
+      meta: {
+        layout: MainLayout,
+      },
     },
     {
       path: '/cart',
       name: 'cart',
       component: () => import('@/components/UserCart.vue'),
+      meta: {
+        layout: MainLayout,
+      },
     },
   ],
 });
