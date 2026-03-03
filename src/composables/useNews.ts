@@ -9,7 +9,7 @@ export const useNews = (initialCount = 2) => {
 
   const fetchNews = async () => {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const response = await fetch('https://s3.ru1.storage.beget.cloud/8919b035f716-aero-nexus-data/posts');
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
