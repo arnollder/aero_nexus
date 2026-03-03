@@ -1,6 +1,15 @@
 <template>
   <div class="root" :class="toggleStyles">
     <HeaderLayout title="Гражданский Эшелон" @toggleTheme="toggleTheme" />
+    <nav class="nav_all">
+      <div class="nav_left">
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'home'}">Main</RouterLink>
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'posts'}">Posts</RouterLink>
+      </div>
+      <div class="nav_right">
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'cart'}">Корзина</RouterLink>
+      </div>
+    </nav>
     <div class="container">
       <slot />
     </div>
@@ -49,5 +58,23 @@ const toggleStyles = computed(() => ({
   column-gap: 10px;
   flex-grow: 1;
   padding: 10px;
+}
+.nav_all {
+  display: flex;
+  justify-content: space-between;  
+  padding: 10px 20px;
+}
+.nav_left {
+  display: flex;
+  gap: 10px;
+}
+.nav_btn {
+  padding: 5px 10px;
+  background-color: rgb(44, 172, 44);
+  color: black;
+  border-radius: 5px;
+}
+.active-link {
+  background-color: rgb(241, 61, 61);
 }
 </style>

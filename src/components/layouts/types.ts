@@ -1,5 +1,5 @@
 export interface IMainLayoutProps {
-  statusDark: boolean;
+  statusDark?: boolean;
 }
 
 export interface IHeaderProps {
