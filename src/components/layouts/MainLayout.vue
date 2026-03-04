@@ -4,7 +4,7 @@
     <nav class="nav_all">
       <div class="nav_left">
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'home'}">Main</RouterLink>
-        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'posts'}">Posts</RouterLink>
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'news'}">Posts</RouterLink>
       </div>
       <div class="nav_right">
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'cart'}">Корзина</RouterLink>
@@ -61,7 +61,7 @@ const toggleStyles = computed(() => ({
 }
 .nav_all {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   padding: 10px 20px;
 }
 .nav_left {

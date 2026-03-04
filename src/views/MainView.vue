@@ -1,13 +1,13 @@
 <template>
   <div :class="toggleStyles">
-    <MainLayout @toggleTheme="toggleTheme" :statusDark="statusDark">
+    <!-- <MainLayout @toggleTheme="toggleTheme" :statusDark="statusDark"> -->
       <MainContent class="border" title="Летательные аппараты" :statusDark="statusDark" />
       <button class="sidebar_open_close" @click="toggleSidebar">
         <img v-if="!isSidebar" class="open-close" src="/src/assets/images/buttons/sidebar_open.png" alt="" />
         <img v-if="isSidebar" class="open-close" src="/src/assets/images/buttons/sidebar_close.png" alt="" />
       </button>
       <SidebarNav v-if="isSidebar" class="border" :statusDark="statusDark" />
-    </MainLayout>
+    <!-- </MainLayout> -->
   </div>
 </template>
 

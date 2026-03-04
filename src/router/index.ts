@@ -8,17 +8,20 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('@/views/MainView.vue'),
+      meta: {
+        layout: MainLayout,
+      },
     },
     {
-      path: '/posts',
-      name: 'posts',
+      path: '/news',
+      name: 'news',
       component: () => import('@/components/NewsPosts.vue'),
       meta: {
         layout: MainLayout,
       },
     },
     {
-      path: '/posts/:id',
+      path: '/news/:id',
       name: 'post',
       component: () => import('@/components/NewsPost.vue'),
       meta: {
@@ -36,7 +39,7 @@ const router = createRouter({
   ],
 });
 
-const isAuth = false;
+const isAuth = true;
 
 router.beforeEach((to) => {
   if (to.name === 'cart' && !isAuth) {
