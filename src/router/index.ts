@@ -36,4 +36,15 @@ const router = createRouter({
   ],
 });
 
+const isAuth = false;
+
+router.beforeEach((to) => {
+  if (to.name === 'cart' && !isAuth) {
+    alert('Авторизуйтесь!');
+    return {
+      name: 'home',
+    };
+  }
+});
+
 export default router;
