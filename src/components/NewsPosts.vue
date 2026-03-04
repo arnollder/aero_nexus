@@ -6,14 +6,52 @@
       <button class="btn" @click="router.forward()">ВПЕРЕД</button>
     </div>
     <div>Posts</div>
+    <h2 v-if="isLoading">Loading...</h2>
+    <h2 v-else-if="isError">Ошибка при получении списка постов!</h2>
+    <ul v-else>
+      <li class="post_title" :key="post.id" v-for="post in posts">{{ `${post.id}. ${post.title}` }}</li>
+    </ul>
   </div>
 </template>
 
 <script setup lang="ts">
+import { $api } from '@/api';
+import type { AxiosError } from 'axios';
+import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+
+interface IPost {
+  id: number;
+  body: string;
+  title: string;
+  userId: string;
+}
 
 const router = useRouter();
 const route = useRoute();
+
+const posts = ref<IPost[]>([]);
+const isLoading = ref(false);
+const isError = ref(false);
+
+const fetchPosts = async () => {
+  isLoading.value = true;
+  isError.value = false;
+  posts.value = [];
+  try {
+    const { data } = await $api.get<IPost[]>('/posts');
+    posts.value = data;
+  } catch (err: unknown) {
+    console.error(err as AxiosError);
+    isError.value = true;
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+fetchPosts();
+
+console.log('route', route);
 </script>
 
 <style scoped>
@@ -28,6 +66,9 @@ const route = useRoute();
   color: black;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+.post_title {
   cursor: pointer;
 }
 </style>
