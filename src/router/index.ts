@@ -18,6 +18,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/posts/:id',
+      name: 'post',
+      component: () => import('@/components/NewsPost.vue'),
+      meta: {
+        layout: MainLayout,
+      },
+    },
+    {
       path: '/cart',
       name: 'cart',
       component: () => import('@/components/UserCart.vue'),
