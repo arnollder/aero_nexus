@@ -41,8 +41,6 @@ const toggleSidebar = () => {
 <style scoped>
 .root {
   background-color: beige;
-  background-size: cover;
-  background-position: center;
 }
 .root-dark {
   background-color: black;
