@@ -2,6 +2,8 @@
   <div class="posts_container">
     <button class="btn" @click="router.push({name: 'news'})">К списку постов</button>
     <div >Post: {{ route.params.id }}</div>
+    <div class="">{{ post.title }}</div>
+    <div class="">{{ post.body }}</div>
   </div>
 </template>
 
@@ -24,7 +26,7 @@ const fetchPost = async () => {
   isError.value = false;
   post.value = {} as IPost;
   try {
-    const { data } = await $api.get<IPost>(`/news/${route.params.id}`);
+    const { data } = await $api.get<IPost>(`/posts/${route.params.id}`);
     post.value = data;
   } catch (err: unknown) {
     console.error(err as AxiosError);
@@ -33,8 +35,9 @@ const fetchPost = async () => {
     isLoading.value = false;
   }
 };
-
 fetchPost();
+
+console.log(post.value)
 </script>
 
 <style scoped>
