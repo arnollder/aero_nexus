@@ -9,7 +9,7 @@
     <h2 v-if="isLoading">Loading...</h2>
     <h2 v-else-if="isError">Ошибка при получении списка постов!</h2>
     <ul v-else>
-      <li class="post_title" :key="post.id" v-for="post in posts">{{ `${post.id}. ${post.title}` }}</li>
+      <li @click="redirectToPost(post.id)" class="post_title" :key="post.id" v-for="post in posts">{{ `${post.id}. ${post.title}` }}</li>
     </ul>
   </div>
 </template>
@@ -19,13 +19,7 @@ import { $api } from '@/api';
 import type { AxiosError } from 'axios';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
-interface IPost {
-  id: number;
-  body: string;
-  title: string;
-  userId: string;
-}
+import type { IPost } from './MainContent/types';
 
 const router = useRouter();
 const route = useRoute();
@@ -48,8 +42,11 @@ const fetchPosts = async () => {
     isLoading.value = false;
   }
 };
-
 fetchPosts();
+
+const redirectToPost = (id: number) => {
+  router.push(`/news/${id}`)
+}
 
 console.log('route', route);
 </script>

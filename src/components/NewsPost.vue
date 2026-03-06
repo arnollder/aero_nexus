@@ -1,15 +1,40 @@
 <template>
-  <div class="posts_conteiner">
+  <div class="posts_container">
     <button class="btn" @click="router.push({name: 'news'})">К списку постов</button>
     <div >Post: {{ route.params.id }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { $api } from '@/api';
+import type { AxiosError } from 'axios';
+import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import type { IPost } from './MainContent/types';
 
 const router = useRouter();
 const route = useRoute();
+
+const post = ref<IPost>({} as IPost);
+const isLoading = ref(false);
+const isError = ref(false);
+
+const fetchPost = async () => {
+  isLoading.value = true;
+  isError.value = false;
+  post.value = {} as IPost;
+  try {
+    const { data } = await $api.get<IPost>(`/news/${route.params.id}`);
+    post.value = data;
+  } catch (err: unknown) {
+    console.error(err as AxiosError);
+    isError.value = true;
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+fetchPost();
 </script>
 
 <style scoped>
