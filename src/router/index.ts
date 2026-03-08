@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: '/news',
       name: 'news',
-      component: () => import('@/components/NewsPosts.vue'),
+      component: () => import('@/views/NewsPosts.vue'),
       meta: {
         layout: MainLayout,
       },
@@ -23,7 +23,7 @@ const router = createRouter({
     {
       path: '/news/:id',
       name: 'post',
-      component: () => import('@/components/NewsPost.vue'),
+      component: () => import('@/views/NewsPost.vue'),
       meta: {
         layout: MainLayout,
       },
@@ -31,7 +31,7 @@ const router = createRouter({
     {
       path: '/cart',
       name: 'cart',
-      component: () => import('@/components/UserCart.vue'),
+      component: () => import('@/views/UserCart.vue'),
       meta: {
         layout: MainLayout,
       },

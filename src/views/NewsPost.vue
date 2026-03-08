@@ -1,7 +1,7 @@
 <template>
   <div class="posts_container">
-    <button class="btn" @click="router.push({name: 'news'})">К списку постов</button>
-    <div >Post: {{ route.params.id }}</div>
+    <button class="btn" @click="router.push({ name: 'news' })">К списку постов</button>
+    <div>Post: {{ route.params.id }}</div>
     <div class="">{{ post.title }}</div>
     <div class="">{{ post.body }}</div>
   </div>
@@ -12,7 +12,7 @@ import { $api } from '@/api';
 import type { AxiosError } from 'axios';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import type { IPost } from './MainContent/types';
+import type { IPost } from '../components/MainContent/types';
 
 const router = useRouter();
 const route = useRoute();
@@ -37,7 +37,7 @@ const fetchPost = async () => {
 };
 fetchPost();
 
-console.log(post.value)
+console.log(post.value);
 </script>
 
 <style scoped>
