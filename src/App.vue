@@ -1,11 +1,18 @@
 <template>
-  <component :is="route.meta.layout || 'div'">
-    <RouterView />
+  <component @toggleTheme="toggleTheme" :statusDark="statusDark" :is="route.meta.layout || 'div'">
+    <RouterView :statusDark="statusDark" />
   </component>
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
+
+const isDarkTheme = ref(false);
+// ===== EMITS =====
+const toggleTheme = (event: boolean) => (isDarkTheme.value = event);
+// ===== PROPS =====
+const statusDark = computed(() => isDarkTheme.value);
 
 const route = useRoute();
 </script>

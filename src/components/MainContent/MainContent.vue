@@ -82,7 +82,7 @@ const { loading, error, newsCount, displayedNews, newsStart, newsMore, newsAll }
   align-items: center;
   padding: 10px;
   flex-grow: 1;
-  background-color: rgba(255, 255, 255, 0.3);
+  /* background-color: rgba(255, 255, 255, 0.3); */
   color: dark;
 }
 .content_dark {

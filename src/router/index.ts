@@ -8,6 +8,9 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('@/views/MainView.vue'),
+      meta: {
+        layout: MainLayout,
+      },
     },
     {
       path: '/news',
