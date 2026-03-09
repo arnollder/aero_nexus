@@ -36,6 +36,14 @@ const router = createRouter({
         layout: MainLayout,
       },
     },
+    {
+      path: '/weather',
+      name: 'weather',
+      component: () => import('@/views/WeatherStack.vue'),
+      meta: {
+        layout: MainLayout,
+      },
+    },
   ],
 });
 

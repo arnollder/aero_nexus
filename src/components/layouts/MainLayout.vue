@@ -5,6 +5,7 @@
       <div class="nav_left">
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'home'}">Main</RouterLink>
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'news'}">Posts</RouterLink>
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'weather'}">Weather</RouterLink>
       </div>
       <div class="nav_right">
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'cart'}">Корзина</RouterLink>
