@@ -8,6 +8,7 @@ export const $api = axios.create({
 });
 
 export const $weather = axios.create({
-  baseURL: 'https://api.weatherstack.com/',
+  baseURL: 'https://api.openweathermap.org/data/2.5/',
+  timeout: 10000,
   headers: { 'Accept': 'application/json' },
 });

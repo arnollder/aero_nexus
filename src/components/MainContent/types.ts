@@ -60,5 +60,6 @@ export interface IPost {
 
 export interface IWeatherWidgetProps {
   apiKey: string;
-  location: string;
+  lat: string;
+  lon: string;
 }

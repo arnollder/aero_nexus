@@ -1,14 +1,16 @@
 <template>
-    <WeatherWidget 
-      :apiKey="API_KEY" 
-      location="Nizhny Novgorod"
+  <!-- Нижний Новгород -->
+    <WeatherWidget
+      :apiKey="API_KEY"
+      lat="56.3264816"
+      lon="44.0051395"
     />
 </template>
 
 <script setup lang="ts">
 import WeatherWidget from '@/components/WeatherStack/WeatherWidget.vue'
 
-const API_KEY = 'ba1cd4121513f6a0724caf52d79c9593'
+const API_KEY = '424417532801ae277b2545ae0c4735c6'
 
 </script>
 

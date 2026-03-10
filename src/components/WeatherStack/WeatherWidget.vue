@@ -1,18 +1,13 @@
 <template>
   <div class="weather-info">
-    <h3>{{ weatherData.location?.name }}, {{ weatherData.location?.country }}</h3>
-    <div class="weather-info-flex">
-      <img :src="weatherData.current?.weather_icons[0]" alt="" />
-      <div class="weather-info-right">
-        <div class="weather-main">
-          <span class="temp">{{ weatherData.current?.temperature }}°C </span>
-          <span class="desc">{{ weatherData.current?.weather_descriptions[0] }}</span>
-        </div>
-        <div class="weather-details">
-          <div>💨 Ветер: {{ weatherData.current?.wind_speed }} м/с</div>
-          <div>💧 Влажность: {{ weatherData.current?.humidity }}%</div>
-          <div>🌡️ Давление: {{ weatherData.current?.pressure }} мбар</div>
-        </div>
+    <h3>{{ weatherData.name }}</h3>
+    <div class="weather-main">
+      <p class="temp">{{ weatherData.main?.temp }}°C </p>
+      <p>(ощущается: {{ weatherData.main?.feels_like }}°C)</p>
+      <div class="weather-details">
+        <div>💨 Ветер: {{ weatherData.wind?.speed }} м/с</div>
+        <div>☁️ Облачность: {{ weatherData.clouds?.all }} </div>
+        <div>💧 Влажность: {{ weatherData.main?.humidity }}%</div>
       </div>
     </div>
   </div>
@@ -30,17 +25,21 @@ const weatherData = ref();
 const isLoading = ref(false);
 const isError = ref(false);
 const API_KEY = props.apiKey;
-const location = props.location;
+const lat = props.lat;
+const lon = props.lon;
 
 const fetchWeather = async () => {
   isLoading.value = true;
-  isError.value = false;
+  isError.value = true;
   weatherData.value = [];
   try {
-    const { data } = await $weather.get<IWeatherWidgetProps>(`current`, {
+    const { data } = await $weather.get<IWeatherWidgetProps>('weather', {
       params: {
-        access_key: `${API_KEY}`,
-        query: `${location}`,
+        lat: `${lat}`,
+        lon: `${lon}`,
+        appid: `${API_KEY}`,
+        units: 'metric',
+        lang: 'ru',
       },
     });
     weatherData.value = data;
@@ -52,27 +51,29 @@ const fetchWeather = async () => {
   }
 };
 fetchWeather();
+
+console.log(weatherData.value);
 </script>
 
 <style scoped>
 .weather-info {
-  height: 180px;
+  height: 280px;
   padding: 10px 20px;
   border-radius: 15px;
   color: aliceblue;
   background: linear-gradient(rgb(52, 132, 252), rgb(39, 155, 4));
-  text-align: right;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
 }
 h3 {
   font-size: 24px;
 }
-img {
-  height: 100px;
-  border-radius: 15px;
+.temp {
+  font-size: 56px;
 }
-.weather-info-flex {
-  margin-top: 10px;
-  display: flex;
-  column-gap: 10px;
+.weather-details {
+  margin-top: 20px;
 }
 </style>
