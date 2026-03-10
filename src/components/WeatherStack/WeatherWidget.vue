@@ -58,6 +58,7 @@ console.log(weatherData.value);
 <style scoped>
 .weather-info {
   height: 280px;
+  width: 250px;
   padding: 10px 20px;
   border-radius: 15px;
   color: aliceblue;
