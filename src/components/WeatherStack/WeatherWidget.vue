@@ -2,8 +2,8 @@
   <div class="weather-info">
     <h3>{{ weatherData.name }}</h3>
     <div class="weather-main">
-      <p class="temp">{{ weatherData.main?.temp }}°C </p>
-      <p>(ощущается: {{ weatherData.main?.feels_like }}°C)</p>
+      <p class="temp">{{ Math.round(weatherData.main?.temp) }}°C </p>
+      <p>(ощущается: {{ Math.round(weatherData.main?.feels_like) }}°C)</p>
       <div class="weather-details">
         <div>💨 Ветер: {{ weatherData.wind?.speed }} м/с</div>
         <div>☁️ Облачность: {{ weatherData.clouds?.all }} </div>
