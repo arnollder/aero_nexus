@@ -1,14 +1,18 @@
 <template>
   <div class="weather-info">
-    <h3>{{ weatherData.name }}</h3>
-    <div class="weather-main">
-      <p class="temp">{{ Math.round(weatherData.main?.temp) }}°C </p>
-      <p>(ощущается: {{ Math.round(weatherData.main?.feels_like) }}°C)</p>
-      <div class="weather-details">
-        <div>💨 Ветер: {{ weatherData.wind?.speed }} м/с</div>
-        <div>☁️ Облачность: {{ weatherData.clouds?.all }} </div>
-        <div>💧 Влажность: {{ weatherData.main?.humidity }}%</div>
-      </div>
+    <div v-if="isLoading">Загружаю виджет...</div>
+    <div v-else-if="isError">Ошибка сервиса!</div>
+    <div v-else>
+      <h3>{{ weatherData.name }}</h3>
+      <div class="weather-main">
+        <p class="temp">{{ Math.round(weatherData.main?.temp) }}°C </p>
+        <p>(ощущается: {{ Math.round(weatherData.main?.feels_like) }}°C)</p>
+        <div class="weather-details">
+          <div>💨 Ветер: {{ weatherData.wind?.speed }} м/с</div>
+          <div>☁️ Облачность: {{ weatherData.clouds?.all }}%</div>
+          <div>💧 Влажность: {{ weatherData.main?.humidity }}%</div>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -30,7 +34,7 @@ const lon = props.lon;
 
 const fetchWeather = async () => {
   isLoading.value = true;
-  isError.value = true;
+  isError.value = false;
   weatherData.value = [];
   try {
     const { data } = await $weather.get<IWeatherWidgetProps>('weather', {
@@ -51,8 +55,6 @@ const fetchWeather = async () => {
   }
 };
 fetchWeather();
-
-console.log(weatherData.value);
 </script>
 
 <style scoped>
