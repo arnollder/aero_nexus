@@ -1,7 +1,20 @@
 <template>
-  <div>
-    <p>Нижний Новгород</p>
-    <p>{{ weatherData.current?.temperature }}</p>
+  <div class="weather-info">
+    <h3>{{ weatherData.location?.name }}, {{ weatherData.location?.country }}</h3>
+    <div class="weather-info-flex">
+      <img :src="weatherData.current?.weather_icons[0]" alt="" />
+      <div class="weather-info-right">
+        <div class="weather-main">
+          <span class="temp">{{ weatherData.current?.temperature }}°C </span>
+          <span class="desc">{{ weatherData.current?.weather_descriptions[0] }}</span>
+        </div>
+        <div class="weather-details">
+          <div>💨 Ветер: {{ weatherData.current?.wind_speed }} м/с</div>
+          <div>💧 Влажность: {{ weatherData.current?.humidity }}%</div>
+          <div>🌡️ Давление: {{ weatherData.current?.pressure }} мбар</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,4 +54,25 @@ const fetchWeather = async () => {
 fetchWeather();
 </script>
 
-<style scoped></style>
+<style scoped>
+.weather-info {
+  height: 180px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: aliceblue;
+  background: linear-gradient(rgb(52, 132, 252), rgb(39, 155, 4));
+  text-align: right;
+}
+h3 {
+  font-size: 24px;
+}
+img {
+  height: 100px;
+  border-radius: 15px;
+}
+.weather-info-flex {
+  margin-top: 10px;
+  display: flex;
+  column-gap: 10px;
+}
+</style>
