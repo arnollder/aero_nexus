@@ -2,7 +2,7 @@
   <div class="weather-info">
     <div v-if="isLoading">Загружаю виджет...</div>
     <div v-else-if="isError">Ошибка сервиса!</div>
-    <div v-else>
+    <template v-else>
       <h3>{{ weatherData.name }}</h3>
       <div class="weather-main">
         <p class="temp">{{ Math.round(weatherData.main?.temp) }}°C </p>
@@ -12,8 +12,8 @@
           <div>☁️ Облачность: {{ weatherData.clouds?.all }}%</div>
           <div>💧 Влажность: {{ weatherData.main?.humidity }}%</div>
         </div>
-    </div>
-    </div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -59,9 +59,9 @@ fetchWeather();
 
 <style scoped>
 .weather-info {
-  height: 280px;
-  width: 250px;
-  padding: 10px 20px;
+  height: 320px;
+  width: 280px;
+  padding: 20px;
   border-radius: 15px;
   color: aliceblue;
   background: linear-gradient(rgb(52, 132, 252), rgb(39, 155, 4));
@@ -69,9 +69,13 @@ fetchWeather();
 
   display: flex;
   flex-direction: column;
+  row-gap: 20px;
 }
 h3 {
+  padding: 0 15px;
   font-size: 24px;
+  border: 1px solid white;
+  border-radius: 15px;
 }
 .temp {
   font-size: 56px;
