@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import MainContent from '@/components/MainContent/MainContent.vue';
 // import MainLayout from '@/components/layouts/MainLayout.vue';
 // import SidebarNav from '@/components/SidebarNav/SidebarNav.vue';
 import { ref, computed } from 'vue';

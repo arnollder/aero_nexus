@@ -6,3 +6,8 @@ export const $api = axios.create({
   timeout: 10000,
   headers: { 'X-Custom-Header': 'foobar' },
 });
+
+export const $weather = axios.create({
+  baseURL: 'https://api.weatherstack.com/',
+  headers: { 'Accept': 'application/json' },
+});

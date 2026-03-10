@@ -43,17 +43,22 @@ export interface INewsItem {
   title: string;
   body: string;
 }
-  export interface ICartItem {
-    id: number;
-    name: string;
-    model: string;
-    price: string | number;
-    count: number;
-  }
+export interface ICartItem {
+  id: number;
+  name: string;
+  model: string;
+  price: string | number;
+  count: number;
+}
 
-  export interface IPost {
+export interface IPost {
   id: number;
   body: string;
   title: string;
   userId: string;
+}
+
+export interface IWeatherWidgetProps {
+  apiKey: string;
+  location: string;
 }
