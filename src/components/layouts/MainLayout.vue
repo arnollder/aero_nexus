@@ -1,46 +1,42 @@
 <template>
   <div class="root" :class="toggleStyles">
-    <HeaderLayout title="Гражданский Эшелон" @toggleTheme="toggleTheme" />
+    <HeaderLayout title="Гражданский Эшелон" />
     <nav class="nav_all">
       <div class="nav_left">
-        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'home'}">Main</RouterLink>
-        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'news'}">Posts</RouterLink>
-        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'weather'}">Weather</RouterLink>
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'home' }"
+          >Main</RouterLink
+        >
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'news' }"
+          >Posts</RouterLink
+        >
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'weather' }"
+          >Weather</RouterLink
+        >
       </div>
       <div class="nav_right">
-        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{name: 'cart'}">Корзина</RouterLink>
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'cart' }"
+          >Корзина</RouterLink
+        >
       </div>
     </nav>
     <div class="container">
       <slot />
     </div>
-    <FooterLayout title="Footer" :statusDark="statusDark" />
+    <FooterLayout title="Footer" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import HeaderLayout from '@/components/layouts/HeaderLayout.vue';
 import FooterLayout from '@/components/layouts/FooterLayout.vue';
-import type { IIsDarkEmit, IMainLayoutProps } from './types';
+import { useThemeStore } from '@/stores/toggle-theme';
 
-const isDark = ref(false);
-
-// пропсы
-defineProps<IMainLayoutProps>();
-
-// эмиты
-const emit = defineEmits<IIsDarkEmit>();
-
-// методы
-const toggleTheme = (event: boolean) => {
-  isDark.value = event;
-  emit('toggleTheme', isDark.value);
-};
+const themeStore = useThemeStore();
 
 // ===== смена темы =====
 const toggleStyles = computed(() => ({
-  'root-dark': isDark.value,
+  'root-dark': themeStore.isDark,
 }));
 </script>
 

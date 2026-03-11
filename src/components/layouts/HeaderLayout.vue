@@ -1,36 +1,28 @@
 <template>
   <header :class="toggleStyles">
-    <img class="header-logo" src="/src/assets/images/airplane-icon.svg" alt="">
+    <img class="header-logo" src="/src/assets/images/airplane-icon.svg" alt="" />
     {{ title }}
-    <button :class="toggleButtonsStyles" @click="toggleTheme">Switch Theme</button>
+    <button :class="toggleButtonsStyles" @click="themeStore.toggleTheme">Switch Theme</button>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import type { IIsDarkEmit, IHeaderProps } from './types';
+import { computed } from 'vue';
+import type { IHeaderProps } from './types';
+import { useThemeStore } from '@/stores/toggle-theme';
 
-const isDark = ref(false);
 
 defineProps<IHeaderProps>();
-
-// эмиты
-const emit = defineEmits<IIsDarkEmit>();
-
-// методы
-const toggleTheme = () => {
-  isDark.value = !isDark.value;
-  emit('toggleTheme', isDark.value);
-};
+const themeStore = useThemeStore();
 
 // ===== изменение темы =====
 const toggleStyles = computed(() => ({
   header: true,
-  'header-dark': isDark.value,
+  'header-dark': themeStore.isDark,
 }));
 const toggleButtonsStyles = computed(() => ({
   switch: true,
-  'switch-dark': isDark.value,
+  'switch-dark': themeStore.isDark,
 }));
 </script>
 

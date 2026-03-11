@@ -1,7 +1,6 @@
 // === MainContent ===
 export interface IMainContentProps {
   title: string;
-  statusDark: boolean;
 }
 
 // === ProductCard ===
@@ -17,11 +16,9 @@ export interface IProds {
 }
 export interface IProductCardProps {
   product: IProds;
-  statusDark: boolean;
 }
 
 export interface IClickCounterProps {
-  statusDark: boolean;
   product: IProds;
 }
 
@@ -34,7 +31,6 @@ interface IData {
 
 export interface INewsProps {
   article: IData;
-  statusDark: boolean;
 }
 
 export interface INewsItem {

@@ -5,13 +5,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { IFooterProps } from './types';
+import { useThemeStore } from '@/stores/toggle-theme';
 
-const props = defineProps<IFooterProps>();
+defineProps<IFooterProps>();
+
+const themeStore = useThemeStore();
 
 // ===== смена темы =====
 const toggleStyles = computed(() => ({
   footer: true,
-  'footer-dark': props.statusDark,
+  'footer-dark': themeStore.isDark,
 }));
 </script>
 

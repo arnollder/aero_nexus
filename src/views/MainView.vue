@@ -3,9 +3,9 @@
     <h1 :class="toggleTitleStyles">{{ title }}</h1>
     <section>
       <div class="product_list">
-        <ProductCard v-for="prod in prods" :key="prod.id" :product="prod" :statusDark="statusDark">
+        <ProductCard v-for="prod in prods" :key="prod.id" :product="prod">
           <template #clickcounter>
-            <ClickCounter :statusDark="statusDark" :product="prod" />
+            <ClickCounter :product="prod" />
           </template>
         </ProductCard>
       </div>
@@ -19,12 +19,7 @@
       <p v-else-if="error">{{ error }}</p>
       <template v-else>
         <div class="news_list">
-          <NewsComponent
-            v-for="article in displayedNews"
-            :key="article.id"
-            :article="article"
-            :statusDark="statusDark"
-          />
+          <NewsComponent v-for="article in displayedNews" :key="article.id" :article="article" />
         </div>
 
         <button v-if="newsCount == 2" class="news_button" :class="toggleStyles" @click="newsMore">
@@ -52,22 +47,24 @@ import ProductCard from '@/components/MainContent/ProductCard.vue';
 import NewsComponent from '@/components/MainContent/NewsComponent.vue';
 import { useNews } from '@/composables/useNews';
 
-import type { IMainContentProps } from '@/components/MainContent/types'
+import type { IMainContentProps } from '@/components/MainContent/types';
 
 import { prods } from '@/data/mocks/prods.mocks';
 
 import { computed } from 'vue';
+import { useThemeStore } from '@/stores/toggle-theme';
 
 // ===== PROPS =====
-const props = defineProps<IMainContentProps>();
+defineProps<IMainContentProps>();
 
+const themeStore = useThemeStore();
 // ===== TOGGLE THEME =====
 const toggleStyles = computed(() => ({
-  content_dark: props.statusDark,
-  news_button_dark: props.statusDark,
+  content_dark: themeStore.isDark,
+  news_button_dark: themeStore.isDark,
 }));
 const toggleTitleStyles = computed(() => ({
-  h1_dark: props.statusDark,
+  h1_dark: themeStore.isDark,
 }));
 
 // ===== NEWS BLOCK =====
@@ -82,7 +79,6 @@ const { loading, error, newsCount, displayedNews, newsStart, newsMore, newsAll }
   align-items: center;
   padding: 10px;
   flex-grow: 1;
-  /* background-color: rgba(255, 255, 255, 0.3); */
   color: dark;
 }
 .content_dark {

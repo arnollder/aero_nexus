@@ -17,6 +17,9 @@
 import { ref, computed } from 'vue';
 import type { IClickCounterProps } from './types';
 import { useLocalStorage } from '@/composables/useLocalStorage';
+import { useThemeStore } from '@/stores/toggle-theme';
+
+const themeStore = useThemeStore();
 
 // ===== ADD TO CART =====
 const count = ref(0);
@@ -37,10 +40,10 @@ const props = defineProps<IClickCounterProps>();
 // ===== TOGGLE STYLES =====
 const toggleButtonsStyles = computed(() => ({
   btn: true,
-  btn_dark: props.statusDark,
+  btn_dark: themeStore.isDark,
 }));
 const toggleAddBasketStyles = computed(() => ({
-  add_cart_dark: props.statusDark,
+  add_cart_dark: themeStore.isDark,
 }));
 </script>
 

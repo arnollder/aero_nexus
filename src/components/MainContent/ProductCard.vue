@@ -15,8 +15,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { IProductCardProps } from './types';
+import { useThemeStore } from '@/stores/toggle-theme';
 
-const props = withDefaults(defineProps<IProductCardProps>(), {
+const themeStore = useThemeStore();
+
+withDefaults(defineProps<IProductCardProps>(), {
   product: () => ({
     id: 999,
     name: 'No Name',
@@ -29,7 +32,7 @@ const props = withDefaults(defineProps<IProductCardProps>(), {
 
 // ===== изменение темы =====
 const toggleStyles = computed(() => ({
-  'root-dark': props.statusDark,
+  'root-dark': themeStore.isDark,
 }));
 </script>
 
