@@ -2,11 +2,11 @@
   <div class="weather-info">
     <div v-if="isLoading">Загружаю виджет...</div>
     <div v-else-if="isError">Ошибка сервиса!</div>
-    <template v-else>
-      <h3>{{ weatherData.name }}</h3>
+    <template v-else-if="weatherData">
+      <h3>{{ weatherData?.name }}</h3>
       <div class="weather-main">
-        <p class="temp">{{ Math.round(weatherData.main?.temp) }}°C </p>
-        <p>(ощущается: {{ Math.round(weatherData.main?.feels_like) }}°C)</p>
+        <p class="temp">{{ temp }}°C</p>
+        <p>(ощущается: {{ feels_like }}°C)</p>
         <div class="weather-details">
           <div>💨 Ветер: {{ weatherData.wind?.speed }} м/с</div>
           <div>☁️ Облачность: {{ weatherData.clouds?.all }}%</div>
@@ -18,43 +18,21 @@
 </template>
 
 <script setup lang="ts">
-import { $weather } from '@/api';
-import { ref } from 'vue';
+import { computed } from 'vue';
 import type { IWeatherWidgetProps } from '../MainContent/types';
-import type { AxiosError } from 'axios';
+import { useWeatherWidget } from '@/composables/useWeatherWidget';
 
 const props = defineProps<IWeatherWidgetProps>();
 
-const weatherData = ref();
-const isLoading = ref(false);
-const isError = ref(false);
-const API_KEY = props.apiKey;
-const lat = props.lat;
-const lon = props.lon;
+const { isLoading, isError, weatherData } = useWeatherWidget(props.lat, props.lon, props.apiKey);
 
-const fetchWeather = async () => {
-  isLoading.value = true;
-  isError.value = false;
-  weatherData.value = [];
-  try {
-    const { data } = await $weather.get<IWeatherWidgetProps>('weather', {
-      params: {
-        lat: `${lat}`,
-        lon: `${lon}`,
-        appid: `${API_KEY}`,
-        units: 'metric',
-        lang: 'ru',
-      },
-    });
-    weatherData.value = data;
-  } catch (err: unknown) {
-    console.error(err as AxiosError);
-    isError.value = true;
-  } finally {
-    isLoading.value = false;
-  }
-};
-fetchWeather();
+// ===== дополнительная проверка из-за округления =====
+const temp = computed(() =>
+  weatherData.value?.main?.temp ? Math.round(weatherData.value.main.temp) : '-',
+);
+const feels_like = computed(() =>
+  weatherData.value?.main?.feels_like ? Math.round(weatherData.value.main.feels_like) : '-',
+);
 </script>
 
 <style scoped>
