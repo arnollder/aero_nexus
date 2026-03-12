@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IFooterProps } from './types';
+import type { IFooterProps } from '../../types/layouts.interface';
 import { useThemeStore } from '@/stores/toggle-theme';
 
 defineProps<IFooterProps>();

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IProductCardProps } from './types';
+import type { IProductCardProps } from '../../types/types';
 import { useThemeStore } from '@/stores/toggle-theme';
 
 const themeStore = useThemeStore();

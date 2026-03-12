@@ -1,4 +1,4 @@
-import type { INewsItem } from '@/components/MainContent/types';
+import type { INewsItem } from '@/types/types';
 import { ref, computed, onMounted, readonly } from 'vue';
 
 export const useNews = (initialCount = 2) => {

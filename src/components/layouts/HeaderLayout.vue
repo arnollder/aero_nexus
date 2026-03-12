@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IHeaderProps } from './types';
+import type { IHeaderProps } from '../../types/layouts.interface';
 import { useThemeStore } from '@/stores/toggle-theme';
 
 

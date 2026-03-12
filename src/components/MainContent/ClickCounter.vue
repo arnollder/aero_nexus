@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import type { IClickCounterProps } from './types';
+import type { IClickCounterProps } from '../../types/types';
 import { useLocalStorage } from '@/composables/useLocalStorage';
 import { useThemeStore } from '@/stores/toggle-theme';
 

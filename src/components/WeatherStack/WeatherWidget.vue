@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IWeatherWidgetProps } from '../MainContent/types';
+import type { IWeatherWidgetProps } from '../../types/types';
 import { useWeatherWidget } from '@/composables/useWeatherWidget';
 import { useThemeStore } from '@/stores/toggle-theme';
 

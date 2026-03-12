@@ -47,7 +47,7 @@ import ProductCard from '@/components/MainContent/ProductCard.vue';
 import NewsComponent from '@/components/MainContent/NewsComponent.vue';
 import { useNews } from '@/composables/useNews';
 
-import type { IMainContentProps } from '@/components/MainContent/types';
+import type { IMainContentProps } from '@/types/types';
 
 import { prods } from '@/data/mocks/prods.mocks';
 

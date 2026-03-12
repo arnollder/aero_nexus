@@ -1,4 +1,4 @@
-import type { IProds } from '@/components/MainContent/types';
+import type { IProds } from '@/types/types';
 
 export const prods: IProds[] = [
   {

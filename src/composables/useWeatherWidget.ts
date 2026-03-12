@@ -1,5 +1,5 @@
 import { $weather } from '@/api';
-import type { IWeatherData } from '@/components/MainContent/types';
+import type { IWeatherData } from '@/types/types';
 import type { AxiosError } from 'axios';
 import { ref } from 'vue';
 

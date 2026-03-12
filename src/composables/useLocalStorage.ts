@@ -1,4 +1,4 @@
-import type { ICartItem, IProds } from '@/components/MainContent/types';
+import type { ICartItem, IProds } from '@/types/types';
 
 export function useLocalStorage() {
   const saveToLocalStorage = (product: IProds, count: number) => {

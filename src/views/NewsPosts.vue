@@ -21,7 +21,7 @@ import { $api } from '@/api';
 import type { AxiosError } from 'axios';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import type { IPost } from '../components/MainContent/types';
+import type { IPost } from '../types/types';
 
 const router = useRouter();
 const route = useRoute();
