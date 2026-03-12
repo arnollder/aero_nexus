@@ -21,10 +21,10 @@
 import { computed } from 'vue';
 import type { IWeatherWidgetProps } from '../MainContent/types';
 import { useWeatherWidget } from '@/composables/useWeatherWidget';
+import { useThemeStore } from '@/stores/toggle-theme';
 
 const props = defineProps<IWeatherWidgetProps>();
 const themeStore = useThemeStore();
-
 
 const { isLoading, isError, weatherData } = useWeatherWidget(props.lat, props.lon, props.apiKey);
 
@@ -35,6 +35,10 @@ const temp = computed(() =>
 const feels_like = computed(() =>
   weatherData.value?.main?.feels_like ? Math.round(weatherData.value.main.feels_like) : '-',
 );
+// ===== изменение темы =====
+const toggleStyles = computed(() => ({
+  'weather-info_dark': themeStore.isDark,
+}));
 </script>
 
 <style scoped>
