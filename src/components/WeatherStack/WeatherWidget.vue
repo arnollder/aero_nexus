@@ -1,5 +1,5 @@
 <template>
-  <div class="weather-info">
+  <div class="weather-info" :class="toggleStyles">
     <div v-if="isLoading">Загружаю виджет...</div>
     <div v-else-if="isError">Ошибка сервиса!</div>
     <template v-else-if="weatherData">
@@ -23,6 +23,8 @@ import type { IWeatherWidgetProps } from '../MainContent/types';
 import { useWeatherWidget } from '@/composables/useWeatherWidget';
 
 const props = defineProps<IWeatherWidgetProps>();
+const themeStore = useThemeStore();
+
 
 const { isLoading, isError, weatherData } = useWeatherWidget(props.lat, props.lon, props.apiKey);
 
@@ -43,11 +45,15 @@ const feels_like = computed(() =>
   border-radius: 15px;
   color: aliceblue;
   background: linear-gradient(rgb(52, 132, 252), rgb(39, 155, 4));
+
   text-align: center;
 
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+}
+.weather-info_dark {
+  background: linear-gradient(rgb(111, 113, 121), rgb(24, 24, 26));
 }
 h3 {
   padding: 0 15px;
