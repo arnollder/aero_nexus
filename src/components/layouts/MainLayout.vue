@@ -12,6 +12,9 @@
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'weather' }"
           >Weather</RouterLink
         >
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'users' }"
+          >Users</RouterLink
+        >
       </div>
       <div class="nav_right">
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'cart' }"

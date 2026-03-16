@@ -44,6 +44,14 @@ const router = createRouter({
         layout: MainLayout,
       },
     },
+    {
+      path: '/users',
+      name: 'users',
+      component: () => import('@/views/UsersView.vue'),
+      meta: {
+        layout: MainLayout,
+      },
+    },
   ],
 });
 
