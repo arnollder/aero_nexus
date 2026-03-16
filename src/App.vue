@@ -1,6 +1,6 @@
 <template>
   <component :is="route.meta.layout || 'div'">
-    <RouterView title="Дроны"/>
+    <RouterView />
   </component>
 </template>
 

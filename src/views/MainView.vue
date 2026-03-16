@@ -1,6 +1,6 @@
 <template>
   <div class="content" :class="toggleStyles">
-    <h1 :class="toggleTitleStyles">{{ title }}</h1>
+    <h1 :class="toggleTitleStyles">Дроны</h1>
     <section>
       <div class="product_list">
         <ProductCard v-for="prod in prods" :key="prod.id" :product="prod">
@@ -47,7 +47,7 @@ import ProductCard from '@/components/MainContent/ProductCard.vue';
 import NewsComponent from '@/components/MainContent/NewsComponent.vue';
 import { useNews } from '@/composables/useNews';
 
-import type { IMainContentProps } from '@/types/types';
+// import type { IMainContentProps } from '@/types/types';
 
 import { prods } from '@/data/mocks/prods.mocks';
 
@@ -55,7 +55,7 @@ import { computed } from 'vue';
 import { useThemeStore } from '@/stores/toggle-theme';
 
 // ===== PROPS =====
-defineProps<IMainContentProps>();
+// defineProps<IMainContentProps>();
 
 const themeStore = useThemeStore();
 // ===== TOGGLE THEME =====

@@ -1,7 +1,7 @@
 // === MainContent ===
-export interface IMainContentProps {
-  title: string;
-}
+// export interface IMainContentProps {
+//   title: string;
+// }
 
 // === ProductCard ===
 export interface IProds {
@@ -73,4 +73,11 @@ export interface IWeatherData {
   clouds?: {
     all: number;
   };
+}
+
+export interface IUser {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
 }
