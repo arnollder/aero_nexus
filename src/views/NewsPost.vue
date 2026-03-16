@@ -2,8 +2,8 @@
   <div class="posts_container">
     <button class="btn" @click="router.push({ name: 'news' })">К списку постов</button>
     <div>Post: {{ route.params.id }}</div>
-    <div class="">{{ post.title }}</div>
-    <div class="">{{ post.body }}</div>
+    <div>{{ post.title }}</div>
+    <div>{{ post.body }}</div>
   </div>
 </template>
 
