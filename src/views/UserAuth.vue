@@ -13,9 +13,10 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router';
 import { useAuthStore } from '@/stores/authStore';
 import { storeToRefs } from 'pinia';
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 
 const authStore = useAuthStore();
 const { isAuth } = storeToRefs(authStore);
@@ -35,6 +36,13 @@ const handleSubmit = () => {
   formData.login = '';
   formData.password = '';
 };
+
+watch(isAuth, (newValue) => {
+  if (newValue) {
+    router.push(`/`)
+  }
+})
+
 </script>
 
 <style scoped>
