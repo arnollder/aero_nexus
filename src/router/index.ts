@@ -60,6 +60,14 @@ const router = createRouter({
         layout: MainLayout,
       },
     },
+    {
+      path: '/auth',
+      name: 'auth',
+      component: () => import('@/views/UserAuth.vue'),
+      meta: {
+        layout: MainLayout,
+      },
+    },
   ],
 });
 

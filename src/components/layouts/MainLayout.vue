@@ -17,6 +17,9 @@
         >
       </div>
       <div class="nav_right">
+        <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'auth' }"
+          >Авторизация</RouterLink
+        >
         <RouterLink :activeClass="'active-link'" class="nav_btn" :to="{ name: 'cart' }"
           >Корзина</RouterLink
         >
@@ -65,6 +68,10 @@ const toggleStyles = computed(() => ({
   padding: 10px 20px;
 }
 .nav_left {
+  display: flex;
+  gap: 10px;
+}
+.nav_right {
   display: flex;
   gap: 10px;
 }
