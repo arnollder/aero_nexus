@@ -39,10 +39,9 @@ const handleSubmit = () => {
 
 watch(isAuth, (newValue) => {
   if (newValue) {
-    router.push(`/`)
+    router.push(`/`);
   }
-})
-
+});
 </script>
 
 <style scoped>

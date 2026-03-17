@@ -19,8 +19,19 @@
 
 <script setup lang="ts">
 import router from '@/router';
+import { useAuthStore } from '@/stores/authStore';
 import { useUsersStore } from '@/stores/usersStore';
 import { storeToRefs } from 'pinia';
+import { onBeforeMount } from 'vue';
+
+const authStore = useAuthStore();
+const { isAuth } = storeToRefs(authStore);
+
+onBeforeMount(() => {
+  if (!isAuth.value) {
+    router.push('/auth');
+  }
+});
 
 const userStore = useUsersStore();
 const { isError, isLoading, usersList } = storeToRefs(userStore);
